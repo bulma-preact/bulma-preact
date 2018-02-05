@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "maxNodeModuleJsDepth": 6,
+        "declaration": true,
+        "module": "esnext",
+        "jsx": "react",
+        "jsxFactory": "h",
+        "outDir": "lib/",
+        "target": "esnext"
+    },
+    "include": [
+        "src/*.ts",
+        "src/**/*.ts",
+        "src/**/*.tsx"
+    ]
+}

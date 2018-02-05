@@ -1,0 +1,1 @@
+import{h,render}from"/bulma-react/demopreact.js?0.0.1";import{Button}from"../src/index.js?0.0.1";render(h(Button,{isColor:"primary"},"Button"),document.body);

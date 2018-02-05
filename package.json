@@ -1,0 +1,37 @@
+{
+  "name": "bulma-preact",
+  "version": "0.0.1",
+  "description": "bulma components build by preact",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "f2e start",
+    "docs": "f2e build",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "tsc && node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bulma-preact/bulma-preact.git"
+  },
+  "keywords": [
+    "bulma",
+    "preact"
+  ],
+  "author": "shy2850,MoGoethe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bulma-preact/bulma-preact/issues"
+  },
+  "homepage": "https://github.com/bulma-preact/bulma-preact#readme",
+  "devDependencies": {
+    "f2e-middle-typescript": "^0.3.3",
+    "f2e-server": "^2.8.0",
+    "less": "^2.7.3",
+    "requirejs": "^2.3.5",
+    "typescript": "^2.7.1"
+  },
+  "dependencies": {
+    "bulma": "^0.6.2",
+    "preact": "^8.2.7"
+  }
+}
