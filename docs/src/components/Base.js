@@ -1,5 +1,5 @@
 import classNames from '../utils/classnames.js?0.0.1';
-import { h, Component } from '/bulma-react/demopreact.js?0.0.1';
+import { h, Component } from '/bulma-react/demo/preact.js?0.0.1';
 export default class extends Component {
     constructor() {
         super(...arguments);

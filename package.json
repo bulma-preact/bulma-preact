@@ -24,14 +24,12 @@
   },
   "homepage": "https://github.com/bulma-preact/bulma-preact#readme",
   "devDependencies": {
+    "bulma": "^0.6.2",
     "f2e-middle-typescript": "^0.3.3",
     "f2e-server": "^2.8.0",
     "less": "^2.7.3",
+    "preact": "^8.2.7",
     "requirejs": "^2.3.5",
     "typescript": "^2.7.1"
-  },
-  "dependencies": {
-    "bulma": "^0.6.2",
-    "preact": "^8.2.7"
   }
 }
