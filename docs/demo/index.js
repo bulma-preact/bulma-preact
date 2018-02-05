@@ -1,1 +1,1 @@
-import{h,render}from"/bulma-react/demo/preact.js?0.0.1";import{Button}from"../src/index.js?0.0.1";render(h(Button,{isColor:"primary"},"Button"),document.body);
+import{h,render}from"/bulma-preact/demo/preact.js?0.0.1";import{Button}from"../src/index.js?0.0.1";render(h(Button,{isColor:"primary"},"Button"),document.body);

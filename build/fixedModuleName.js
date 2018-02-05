@@ -14,7 +14,7 @@ module.exports = conf => ({
         if (/\.tsx?$/.test(pathname)) {
             return data.toString().replace(REG_IMPORT, (mat, before, moduleId) => {
                 if (/^\w+$/.test(moduleId)) {
-                    moduleId = (conf.build ? '/bulma-react/demo/' : '/demo/') + moduleId
+                    moduleId = (conf.build ? '/bulma-preact/demo/' : '/demo/') + moduleId
                 }
                 return before + moduleId + '.js?' + version
             })
