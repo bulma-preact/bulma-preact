@@ -7,10 +7,14 @@
     <title>Bulma Preact</title>
     <link rel="stylesheet" href="./demo/bulma.css">
     <script type="module">
-        import './demo/index.js'
+        import './demo/index.js?1517902640866'
     </script>
 </head>
 <body>
-    
 </body>
+<script>
+    navigator.serviceWorker.register('./demo/service-worker.js')
+        .then(() => console.log('service worker ok'))
+        .catch(() => console.error('servcie worker error'))
+</script>
 </html>

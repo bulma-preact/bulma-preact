@@ -1,5 +1,5 @@
-import { h } from '/bulma-preact/demo/preact.js?0.0.1';
-import Base from './Base.js?0.0.1';
+import { h } from '/bulma-preact/demo/preact.js';
+import Base from './Base.js';
 export default class extends Base {
     render(node) {
         const { href } = this.props;

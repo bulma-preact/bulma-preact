@@ -16,7 +16,7 @@ module.exports = conf => ({
                 if (/^\w+$/.test(moduleId)) {
                     moduleId = (conf.build ? '/bulma-preact/demo/' : '/demo/') + moduleId
                 }
-                return before + moduleId + '.js?' + version
+                return before + moduleId + '.js'
             })
         }
         if (/\.js$/.test(pathname)) {
