@@ -5,8 +5,6 @@ const build = ({
 })[argv[argv.length - 1]]
 
 module.exports = {
-    host: 'localhost',
-    port: 2850,
     livereload: !build,
     build,
     gzip: true,

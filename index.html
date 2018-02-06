@@ -5,16 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bulma Preact</title>
-    <link rel="stylesheet" href="./demo/bulma.css">
+    <link rel="stylesheet" href="./demo/bulma.css?<%=Date.now()%>">
     <script type="module">
         import './demo/index.js?<%=Date.now()%>'
     </script>
 </head>
 <body>
 </body>
-<script>
-    navigator.serviceWorker.register('./demo/service-worker.js')
-        .then(() => console.log('service worker ok'))
-        .catch(() => console.error('servcie worker error'))
-</script>
 </html>

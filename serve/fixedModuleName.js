@@ -1,10 +1,11 @@
 const { relative } = require('path')
-const { version } = require('../package.json')
 const REG_IMPORT = /(import.*?from[^\w-\/.]+)([.\w-\/]+)/g
 const CODE_PRE = `
 let exports = {};
 let module = {exports};
 `
+const version = Date.now()
+
 module.exports = conf => ({
     onSet: (pathname, data, store) => {
         if (!(data && data.toString)) {
@@ -16,7 +17,7 @@ module.exports = conf => ({
                 if (/^\w+$/.test(moduleId)) {
                     moduleId = (conf.build ? '/bulma-preact/demo/' : '/demo/') + moduleId
                 }
-                return before + moduleId + '.js'
+                return before + moduleId + '.js?' + version
             })
         }
         if (/\.js$/.test(pathname)) {
