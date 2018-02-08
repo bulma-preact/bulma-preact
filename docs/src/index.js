@@ -1,1 +1,0 @@
-import Base from"./components/Base.js";import Button from"./components/Button.js";import classNames from"./utils/classnames.js";export{Base,Button};export default{Base:Base,Button:Button,util:{classNames:classNames}};

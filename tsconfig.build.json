@@ -3,7 +3,7 @@
         "moduleResolution": "node",
         "maxNodeModuleJsDepth": 6,
         "declaration": true,
-        "module": "commonjs",
+        "module": "esnext",
         "jsx": "react",
         "jsxFactory": "h",
         "outDir": "lib/",

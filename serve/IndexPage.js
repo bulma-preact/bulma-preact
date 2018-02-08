@@ -1,3 +1,3 @@
 module.exports = conf => ({
-    onRoute: pathname => /^[\w\-\/]*$/.test(pathname) ? 'index.html' : pathname
+    onRoute: pathname => /\/$|^$/.test(pathname) ? pathname + 'index.html' : pathname
 })

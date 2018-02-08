@@ -1,1 +1,0 @@
-const classNames=function e(...s){let t=[];return s.forEach(s=>{if(!s)return;const r=typeof s;if("string"===r||"number"===r)t.push(s);else if(Array.isArray(s)&&s.length){let r=e.apply(null,s);r&&t.push(r)}else"object"===r&&Object.keys(s).forEach(e=>{s[e]&&t.push(e)})}),t.join(" ")};export default classNames;
