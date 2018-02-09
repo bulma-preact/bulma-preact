@@ -3,6 +3,7 @@ const { transpile }  = require('typescript')
 const { highlightAuto } = require('highlight.js')
 const { readFileSync } = require('fs')
 const { join } = require('path')
+const { template } = require('lodash')
 const MenuRender = require('./MenuRender')
 
 const REG_AMD = /(^define\(|[^.\w]define\()(?!\s*['"()])/
@@ -26,7 +27,7 @@ const renderMD = md => {
 }
 
 
-const layout = readFileSync(join(__dirname, '../demo/layout.htm')).toString()
+const layout = template(readFileSync(join(__dirname, '../demo/layout.htm')).toString())
 
 module.exports = conf => {
     const {
@@ -37,7 +38,11 @@ module.exports = conf => {
             const match = pathname.match(/(\w+)?\/?README\.md$/)
             if (match) {
                 const key = match[1] || 'Index'
-                const html = layout.replace('$[placeholder]', `
+                const html = layout({
+                    conf: {
+                        basePath: build ? '/bulma-preact/' : '/'
+                    }
+                }).replace('$[placeholder]', `
     <div class="container columns">
         <div class="column is-2">${MenuRender(key, build)}</div>
         <div class="column content">${renderMD(data.toString())}</div>

@@ -19,13 +19,9 @@ module.exports = {
     ],
     bundles: [
         {
-            test: /src\/.*\.[jet]sx?$/,
-            dist: 'demo/config.js'
-        }, {
-            test: /demo\/preact/,
+            test: /(src|demo)\/(?!config).*\.[jet]sx?$/,
             dist: 'demo/config.js'
         }
     ],
-    basePath: build ? '/bulma-preact/' : '/',
     output: require('path').join(__dirname, './docs')
 }

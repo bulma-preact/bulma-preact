@@ -8,7 +8,7 @@
     <link href="https://cdn.bootcss.com/bulma/0.6.2/css/bulma.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
-    <script src="<%-conf.basePath%>demo/config.js?<%-Date.now()%>"></script>
+    <script src="/bulma-preact/demo/config.js?1518149030848"></script>
 </head>
 <body>
 
