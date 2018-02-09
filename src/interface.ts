@@ -13,6 +13,8 @@ type Floats = 'clearfix' | 'pulled-left' | 'pulled-right'
 type Lesses = 'marginless' | 'paddingless' | 'radiusless' | 'shadowless'
 type Alignments = 'left' | 'centered' | 'right';
 
+type ColumnSizes = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
+
 interface ComponentBaseProps extends JSX.HTMLAttributes{
     isColor?: Colors,
     isSize?: Sizes,

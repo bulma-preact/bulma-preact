@@ -12,9 +12,9 @@ module.exports = {
     include: /__include\(["'\s]+([^"'\s]+)["'\s]+(?:,["'\s]+([^"'\s]+)["'\s]+)?\)/g,
     buildFilter: p => !p || /^(src|demo|preact|index|README)/.test(p),
     middlewares: [
+        { middleware: 'template', test: /(config\.js)$/ },
         require('./serve/IndexPage'),
         require('./serve/README.md'),
-        { middleware: 'template', test: /(\.html?|config\.js)$/ },
         { middleware: 'typescript', getModuleId }
     ],
     bundles: [

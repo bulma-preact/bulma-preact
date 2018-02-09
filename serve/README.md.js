@@ -45,7 +45,7 @@ module.exports = conf => {
                 }).replace('$[placeholder]', `
     <div class="container columns">
         <div class="column is-2">${MenuRender(key, build)}</div>
-        <div class="column content">${renderMD(data.toString())}</div>
+        <div class="content column">${renderMD(data.toString())}</div>
     </div>
                 `)
                 store._set(pathname.replace(/README\.md$/,'index.html'), html)

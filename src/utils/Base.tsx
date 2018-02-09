@@ -8,7 +8,8 @@ export interface BasePropsType extends ComponentBaseProps, BaseStateType {
 }
 
 export default class extends Component<BasePropsType, BaseStateType> {
-    getClasses = (baseClass?: string): string => {
+    defaultClass = ''
+    getClasses = (): string => {
         const {
             isColor,
             isSize,
@@ -22,7 +23,7 @@ export default class extends Component<BasePropsType, BaseStateType> {
             isLoading,
             className
         } = this.props
-        return (baseClass ? baseClass + ' ' : '') + classNames([
+        return (this.defaultClass ? this.defaultClass  + ' ' : '') + classNames([
             isColor,
             isSize,
             isFloat,
@@ -36,7 +37,7 @@ export default class extends Component<BasePropsType, BaseStateType> {
         ]).replace(/(^|\s)(\w)/g, '$1is-$2') + (className ? (' ' + className) : '')
     }
     render(node: VNode) {
-        const { isDisabled } = this.props
-        return <a className={this.getClasses()} disabled={isDisabled}>{node.children}</a>
+        const { isDisabled, style } = this.props
+        return <a className={this.getClasses()} disabled={isDisabled} style={style}>{node.children}</a>
     }
 }

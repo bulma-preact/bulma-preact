@@ -1,6 +1,9 @@
 import Base from './utils/Base'
 import Button from './Button/index'
+import Columns from './Columns/index'
 import Menu from './Menu/index'
+import Notification from './Notification/index'
+
 import classNames from './utils/classnames'
 
 /**
@@ -9,5 +12,7 @@ import classNames from './utils/classnames'
 export {
     Base,
     Button,
-    Menu
+    Columns,
+    Menu,
+    Notification
 }

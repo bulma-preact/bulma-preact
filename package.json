@@ -1,6 +1,6 @@
 {
   "name": "bulma-preact",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "bulma components build by preact",
   "module": "lib/index.js",
   "main": "dist/bumla-preact.js",
