@@ -1,47 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bulma Preact</title>
-    <link href="https://cdn.bootcss.com/bulma/0.6.2/css/bulma.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
-    <script src="/bulma-preact/demo/config.js?1518149030848"></script>
-</head>
-<body>
+## Button
 
-    <div class="container columns">
-        <div class="column is-2"><aside class="menu "><ul class="menu-list"><li><a href="/bulma-preact/" class>Index</a></li><li><a href="/bulma-preact/src/Button/" class=" is-active">Button</a></li><li><a href="/bulma-preact/src/Menu/" class>Menu</a></li></ul></aside></div>
-        <div class="column content"><h2 id="button">Button</h2>
-<p>create Button with color,size, etc.</p>
-<pre><code class="lang-tsx">import { Button } from <span class="hljs-string">'bulma-preact'</span>
-import { render, h } from <span class="hljs-string">'preact'</span>
+create Button with color,size, etc.
 
-render(&lt;div className=<span class="hljs-string">"panel"</span>&gt;
-    &lt;<span class="hljs-keyword">Button</span> isColor=<span class="hljs-string">"primary"</span>&gt;<span class="hljs-keyword">Button</span>&lt;/<span class="hljs-keyword">Button</span>&gt;
-    &lt;<span class="hljs-keyword">Button</span> isColor=<span class="hljs-string">"link"</span>&gt;<span class="hljs-keyword">Button</span>&lt;/<span class="hljs-keyword">Button</span>&gt;
-    &lt;<span class="hljs-keyword">Button</span> isColor=<span class="hljs-string">"success"</span>&gt;<span class="hljs-keyword">Button</span>&lt;/<span class="hljs-keyword">Button</span>&gt;
-    &lt;<span class="hljs-keyword">Button</span> isColor=<span class="hljs-string">"danger"</span>&gt;<span class="hljs-keyword">Button</span>&lt;/<span class="hljs-keyword">Button</span>&gt;
-    &lt;<span class="hljs-keyword">Button</span> isLoading &gt;<span class="hljs-keyword">Button</span>&lt;/<span class="hljs-keyword">Button</span>&gt;
-    &lt;<span class="hljs-keyword">Button</span> isDisabled &gt;<span class="hljs-keyword">Button</span>&lt;/<span class="hljs-keyword">Button</span>&gt;
-&lt;/div&gt;, container)
-</code></pre>
-<script>define("demo-code-0", ["require", "exports", "bulma-preact", "preact"], function (require, exports, bulma_preact_1, preact_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    const container = document.querySelectorAll('.content .lang-tsx')[0].parentNode.parentNode;
-    preact_1.render(preact_1.h("div", { className: "panel" },
-        preact_1.h(bulma_preact_1.Button, { isColor: "primary" }, "Button"),
-        preact_1.h(bulma_preact_1.Button, { isColor: "link" }, "Button"),
-        preact_1.h(bulma_preact_1.Button, { isColor: "success" }, "Button"),
-        preact_1.h(bulma_preact_1.Button, { isColor: "danger" }, "Button"),
-        preact_1.h(bulma_preact_1.Button, { isLoading: true }, "Button"),
-        preact_1.h(bulma_preact_1.Button, { isDisabled: true }, "Button")), container);
-});
-require(['demo-code-0'])</script></div>
-    </div>
-                
-</body>
-</html>
+``` tsx
+import { Button } from 'bulma-preact'
+import { render, h } from 'preact'
+
+render(<div className="panel">
+    <Button isColor="primary">Button</Button>
+    <Button isColor="link">Button</Button>
+    <Button isColor="success">Button</Button>
+    <Button isColor="danger">Button</Button>
+    <Button isLoading >Button</Button>
+    <Button isDisabled >Button</Button>
+</div>, container)
+```

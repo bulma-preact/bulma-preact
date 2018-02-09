@@ -49,7 +49,6 @@ module.exports = conf => {
     </div>
                 `)
                 store._set(pathname.replace(/README\.md$/,'index.html'), html)
-                return html
             }
         }
     }
