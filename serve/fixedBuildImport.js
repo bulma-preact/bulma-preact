@@ -1,7 +1,7 @@
 module.exports = conf => {
     return conf.build ? {
         onSet(pathname, data) {
-            if (/demo\/index/.test(pathname)) {
+            if (/demo\/bulma-preact/.test(pathname)) {
                 return data.toString().replace('../src/index', 'src/index')
             }
         },

@@ -32,9 +32,8 @@ export default class extends Component<BasePropsType, BaseStateType> {
             isActive && 'active',
             isHovered && 'hovered',
             isFocused && 'focused',
-            isLoading && 'loading',
-            className
-        ]).replace(/(^|\s)(\w)/g, '$1is-$2')
+            isLoading && 'loading'
+        ]).replace(/(^|\s)(\w)/g, '$1is-$2') + (className ? (' ' + className) : '')
     }
     render(node: VNode) {
         const { isDisabled } = this.props

@@ -4,26 +4,28 @@ const build = ({
     docs: !0
 })[argv[argv.length - 1]]
 
-const getModuleId = build ? p => p.replace(/demo\//, '') : undefined
+const getModuleId = p => p
 module.exports = {
     livereload: !build,
     build,
     gzip: true,
     include: /__include\(["'\s]+([^"'\s]+)["'\s]+(?:,["'\s]+([^"'\s]+)["'\s]+)?\)/g,
-    buildFilter: p => !p || /^(src|demo|preact|index\.html)/.test(p),
+    buildFilter: p => !p || /^(src|demo|preact|index|README)/.test(p),
     middlewares: [
-        require('./serve/fixedBuildImport'),
         require('./serve/IndexPage'),
+        require('./serve/README.md'),
+        { middleware: 'template', test: /(\.html?|config\.js)$/ },
         { middleware: 'typescript', getModuleId }
     ],
     bundles: [
         {
             test: /src\/.*\.[jet]sx?$/,
-            dist: 'demo/index.js'
+            dist: 'demo/config.js'
         }, {
-            test: /demo\/.*\.[jet]s?$/,
-            dist: 'demo/index.js'
+            test: /demo\/preact/,
+            dist: 'demo/config.js'
         }
     ],
+    basePath: build ? '/bulma-preact/' : '/',
     output: require('path').join(__dirname, './docs')
 }

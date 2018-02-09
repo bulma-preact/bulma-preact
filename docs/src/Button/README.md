@@ -2,8 +2,8 @@
 
 create Button with color,size, etc.
 
-```javascript [type=module]
-import Button from 'Button'
+``` javascript
+import Button from 'bulma-preact'
 import { render, h } from 'preact'
 
 render(<Button isColor="link">Button</Button>, container)

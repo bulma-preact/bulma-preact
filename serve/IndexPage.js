@@ -1,3 +1,3 @@
 module.exports = conf => ({
-    onRoute: pathname => /\/$|^$/.test(pathname) ? pathname + 'index.html' : pathname
+    onRoute: pathname => pathname.replace(/(src\/\w+)\/*$|^\/*$/, '$1/index.html')
 })

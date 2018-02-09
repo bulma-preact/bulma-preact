@@ -4,9 +4,10 @@ import Base from '../utils/Base'
 export default class extends Base {
     render(node: VNode) {
         const {
-            href
+            href,
+            isDisabled
         } = this.props
 
-        return <a href={href} className={this.getClasses('button')}>{node.children}</a>
+        return <a href={href} className={this.getClasses('button')} disabled={isDisabled}>{node.children}</a>
     }
 }
