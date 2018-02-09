@@ -46,9 +46,6 @@ module.exports = conf => {
                 store._set(pathname.replace(/README\.md$/,'index.html'), html)
                 return html
             }
-        },
-        outputFilter(pathname) {
-            return /README\.md$/.test(pathname)
         }
     }
 }
