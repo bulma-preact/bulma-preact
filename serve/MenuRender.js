@@ -14,7 +14,7 @@ const renderComponent = (activeKey, build) => render(h(Menu, {
     menus: [
         {
             list: [{
-                item: 'Index',
+                item: 'Index',
                 key: 'Index',
                 href: (build ? '/bulma-preact/' : '/')
             }].concat(list.map(name => ({
