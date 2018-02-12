@@ -16,8 +16,6 @@ export {
     Base,
     Button,
     Columns,
-    
-    // TODO
     Dropdown,
     // TODO
     Form,
