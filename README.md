@@ -26,7 +26,7 @@ npm start
 
 ## Components
 Component | Version | Author | Status 
- - | :- | :- | :-: 
+:- | :- | :- | :-: 
 Base | v0.1.0 | shy2850 | Y
 Button | v0.1.0 | shy2850 | Y
 Columns | v0.1.0 | shy2850 | Y
