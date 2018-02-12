@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bulma Preact</title>
+    <link href="https://cdn.bootcss.com/bulma/0.6.2/css/bulma.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
+    <script src="/bulma-preact/demo/config.js?1518416276869"></script>
+</head>
+<body>
+
+    <div class="container columns">
+        <div class="column is-2"><aside class="menu "><ul class="menu-list"><li><a href="/bulma-preact/" class>Index</a></li><li><a href="/bulma-preact/src/Button/" class>Button</a></li><li><a href="/bulma-preact/src/Columns/" class>Columns</a></li><li><a href="/bulma-preact/src/Dropdown/" class=" is-active">Dropdown</a></li><li><a href="/bulma-preact/src/Form/" class>Form</a></li><li><a href="/bulma-preact/src/Menu/" class>Menu</a></li><li><a href="/bulma-preact/src/Notification/" class>Notification</a></li><li><a href="/bulma-preact/src/Tabs/" class>Tabs</a></li></ul></aside></div>
+        <div class="content column"><h2 id="dropdown">Dropdown</h2>
+<p>下拉菜单</p>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Props</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Default</th>
+<th style="text-align:left">Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>align</em></td>
+<td style="text-align:left"><code>&quot;right&quot;</code></td>
+<td style="text-align:left">undefined</td>
+<td style="text-align:left">对齐方式</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>content</em></td>
+<td style="text-align:left"><code>Dropdown.Content</code></td>
+<td style="text-align:left">&quot;&quot;</td>
+<td style="text-align:left">菜单内容</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>trigger</em></td>
+<td style="text-align:left"><code>&quot;click/hover/focus&quot;</code></td>
+<td style="text-align:left">&quot;click&quot;</td>
+<td style="text-align:left">触发方式</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>up</em></td>
+<td style="text-align:left"><code>boolean</code></td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">菜单弹出方向</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>isActive</em></td>
+<td style="text-align:left"><code>boolean</code></td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">默认展开菜单 <strong>(组件初始化生效，不可修改)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="demo">Demo</h3>
+<pre><code class="lang-tsx"><span class="hljs-keyword">import</span> { Dropdown } <span class="hljs-keyword">from</span> <span class="hljs-string">'bulma-preact'</span>
+<span class="hljs-keyword">import</span> { render, h } <span class="hljs-keyword">from</span> <span class="hljs-string">'preact'</span>
+<span class="hljs-keyword">const</span> { Content, Item } = Dropdown
+
+<span class="hljs-keyword">const</span> content = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Content</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Item</span>&gt;</span>Dropdown item<span class="hljs-tag">&lt;/<span class="hljs-name">Item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Item</span> <span class="hljs-attr">isActive</span>&gt;</span>Other dropdown item<span class="hljs-tag">&lt;/<span class="hljs-name">Item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"dropdown-item"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://bulma.io/documentation/components/dropdown/"</span>&gt;</span>With Link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dropdown-divider"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Item</span>&gt;</span>Last dropdown item<span class="hljs-tag">&lt;/<span class="hljs-name">Item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Content</span>&gt;</span>
+
+render(<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Dropdown</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{content}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Dropdown button<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"icon is-small"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"fa fa-angle-down"</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Dropdown</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Dropdown</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{content}</span> <span class="hljs-attr">up</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">"hover"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>is up<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"icon is-small"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"fa fa-angle-up"</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Dropdown</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Dropdown</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{content}</span> <span class="hljs-attr">align</span>=<span class="hljs-string">"right"</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">"focus"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>align right<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"icon is-small"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"fa fa-angle-down"</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Dropdown</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Dropdown</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{content}</span> <span class="hljs-attr">isActive</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>auto expended<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"icon is-small"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"fa fa-angle-down"</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Dropdown</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>, container)</span>
+</code></pre>
+<script>define("demo-code-0", ["require", "exports", "bulma-preact", "preact"], function (require, exports, bulma_preact_1, preact_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    const container = document.querySelectorAll('.content .lang-tsx')[0].parentNode.parentNode;
+    const { Content, Item } = bulma_preact_1.Dropdown;
+    const content = preact_1.h(Content, null,
+        preact_1.h(Item, null, "Dropdown item"),
+        preact_1.h(Item, { isActive: true }, "Other dropdown item"),
+        preact_1.h("a", { className: "dropdown-item", href: "https://bulma.io/documentation/components/dropdown/" }, "With Link"),
+        preact_1.h("hr", { class: "dropdown-divider" }),
+        preact_1.h(Item, null, "Last dropdown item"));
+    preact_1.render(preact_1.h("div", null,
+        preact_1.h(bulma_preact_1.Dropdown, { content: content },
+            preact_1.h("span", null, "Dropdown button"),
+            preact_1.h("span", { className: "icon is-small" },
+                preact_1.h("i", { className: "fa fa-angle-down", "aria-hidden": "true" }))),
+        preact_1.h(bulma_preact_1.Dropdown, { content: content, up: true, trigger: "hover" },
+            preact_1.h("span", null, "is up"),
+            preact_1.h("span", { className: "icon is-small" },
+                preact_1.h("i", { className: "fa fa-angle-up", "aria-hidden": "true" }))),
+        preact_1.h(bulma_preact_1.Dropdown, { content: content, align: "right", trigger: "focus" },
+            preact_1.h("span", null, "align right"),
+            preact_1.h("span", { className: "icon is-small" },
+                preact_1.h("i", { className: "fa fa-angle-down", "aria-hidden": "true" }))),
+        preact_1.h(bulma_preact_1.Dropdown, { content: content, isActive: true },
+            preact_1.h("span", null, "auto expended"),
+            preact_1.h("span", { className: "icon is-small" },
+                preact_1.h("i", { className: "fa fa-angle-down", "aria-hidden": "true" })))), container);
+});
+require(['demo-code-0'])</script></div>
+    </div>
+                
+<a href="https://github.com/bulma-preact/bulma-preact" target="_"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+</body>
+</html>

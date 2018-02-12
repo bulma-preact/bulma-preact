@@ -8,7 +8,7 @@
     "start": "npm run build && f2e start",
     "docs": "f2e build",
     "build": "tsc -p tsconfig.build.json && rollup -c && uglifyjs ./dist/bumla-preact.js -o ./dist/bumla-preact.min.js",
-    "prepare": "npm run build",
+    "prepare": "npm run build && npm run docs",
     "test": "tsc && node test/index.js"
   },
   "files": [
