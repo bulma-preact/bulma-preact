@@ -1,14 +1,15 @@
 {
   "name": "bulma-preact",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "bulma components build by preact",
   "module": "lib/index.js",
   "main": "dist/bumla-preact.js",
   "scripts": {
+    "install": "rm -rf docs && git clone https://github.com/bulma-preact/bulma-preact.github.io docs",
     "start": "npm run build && f2e start",
-    "docs": "f2e build",
     "build": "tsc -p tsconfig.build.json && rollup -c && uglifyjs ./dist/bumla-preact.js -o ./dist/bumla-preact.min.js",
-    "prepare": "npm run build && npm run docs",
+    "docs": "f2e build && cd docs && git add . && git commit -m 'update docs' && git push",
+    "prepare": "npm run build",
     "test": "tsc && node test/index.js"
   },
   "files": [
