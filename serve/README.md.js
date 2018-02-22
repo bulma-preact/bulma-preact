@@ -12,18 +12,21 @@ const setModuleId = (code, moduleId) => code.replace(REG_AMD, `$1"${moduleId}", 
 const tsconfig = require('../tsconfig.json').compilerOptions
 const renderMD = md => {
     let demos = []
-    const result = marked(md, {
+    const html = marked(md, {
+        gfm: true,
         highlight(code, lang) {
             if (lang === 'tsx') {
                 const index = demos.length
                 demos.push(setModuleId(transpile(`
-                const container = document.querySelectorAll('.content .lang-tsx')[${index}].parentNode.parentNode
+                const container = document.querySelectorAll('.content-holder .lang-tsx')[${index}].parentNode.nextElementSibling
                 ` + code, tsconfig), `demo-code-${index}`) + `require(['demo-code-${index}'])`)
             }
             return highlightAuto(code).value
         }
     })
-    return result + `<script>${demos.join('\n')}</script>`
+    const result = html.replace(/(<pre><code class="lang-tsx">[\s\S\t\r\n]*?<\/code><\/pre>)/g,
+        '</div>$1<div class="column demo-holder"></div><div class="content">')
+    return `<div class="content">${result}</div><script>${demos.join('\n')}</script>`
 }
 
 
@@ -35,20 +38,21 @@ module.exports = conf => {
     } = conf
     return {
         onSet(pathname, data, store) {
-            const match = pathname.match(/(\w+)?\/?README\.md$/)
+            const REG = /(src\/)?(\w+\/)?README\.md$/
+            const match = pathname.match(REG)
             if (match) {
-                const key = match[1] || 'Index'
+                const key = match[2] ? match[2].replace('/', '') : 'Index'
                 const html = layout({
                     conf: {
-                        basePath: build ? '/bulma-preact/' : '/'
+                        basePath: '/'
                     }
                 }).replace('$[placeholder]', `
     <div class="container columns">
         <div class="column is-2">${MenuRender(key, build)}</div>
-        <div class="content column">${renderMD(data.toString())}</div>
+        <div class="column content-holder">${renderMD(data.toString())}</div>
     </div>
                 `)
-                store._set(pathname.replace(/README\.md$/,'index.html'), html)
+                store._set(pathname.replace(REG, '$2index.html'), html)
             }
         }
     }

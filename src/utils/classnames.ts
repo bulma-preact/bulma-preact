@@ -26,4 +26,5 @@ const classNames = function classNames(...args):string {
     return classes.join(' ')
 }
 
+export const isClassNames = (args: any[]): string => classNames(args.map(cls => !!cls && `is-${cls}`))
 export default classNames

@@ -23,6 +23,14 @@ class Dropdown extends Component<PropsType, StateType> {
         }
         this.index = ++Dropdown_Index
     }
+    componentWillReceiveProps (nextProps) {
+        if (nextProps.isActive !== this.state.isActive) {
+            this.setState({
+                isActive: nextProps.isActive
+            })
+        }
+    }
+    
     onClick = () => {
         const { trigger = 'click', toggle = true } = this.props
         const { isActive } = this.state
@@ -41,10 +49,12 @@ class Dropdown extends Component<PropsType, StateType> {
         }
     }
     onBlur = () => {
-        const { trigger } = this.props
-        this.setState({
-            isActive: false
-        })
+        const t = this
+        setTimeout(function () {
+            t.setState({
+                isActive: false
+            })
+        }, 200)
     }
     render(node: VNode) {
         const { state, props, onClick } = this

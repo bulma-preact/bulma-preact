@@ -1,4 +1,4 @@
-import classNames from '../utils/classnames'
+import { isClassNames } from '../utils/classnames'
 import { h, Component, VNode } from 'preact'
 
 export interface BaseStateType extends ComponentBaseState, Loading {
@@ -7,8 +7,9 @@ export interface BaseStateType extends ComponentBaseState, Loading {
 export interface BasePropsType extends ComponentBaseProps, BaseStateType {
 }
 
-export const getClasses = (props: any, defaultClass): string => {
+export const getClasses = (props: BasePropsType|any, defaultClass): string => {
     const {
+        isBoxed,
         isColor,
         isSize,
         isFloat,
@@ -21,18 +22,19 @@ export const getClasses = (props: any, defaultClass): string => {
         isLoading,
         className
     } = props
-    return (defaultClass ? defaultClass + ' ' : '') + classNames([
+    return (defaultClass ? defaultClass + ' ' : '') + isClassNames([
         isColor,
         isSize,
         isFloat,
         isLesses,
         align,
+        isBoxed && 'boxed',
         isOutlined && 'outlined',
         isActive && 'active',
         isHovered && 'hovered',
         isFocused && 'focused',
         isLoading && 'loading'
-    ]).replace(/(^|\s)(\w)/g, '$1is-$2') + (className ? (' ' + className) : '')
+    ]) + (className ? (' ' + className) : '')
 }
 export default class extends Component<BasePropsType, BaseStateType> {
     defaultClass = ''

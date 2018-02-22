@@ -41,8 +41,11 @@ interface Hovered {
 interface Focused {
     isFocused?: boolean;
 }
+interface Boxed {
+    isBoxed?: boolean;
+}
 
-interface ComponentBaseState extends Outlined, Loading, Disabled, Active, Hovered, Focused {
+interface ComponentBaseState extends Outlined, Loading, Disabled, Active, Hovered, Focused, Boxed {
 }
 
 interface Loading {

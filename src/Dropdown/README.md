@@ -8,7 +8,7 @@ Props | Type | Default | Desc
 *content* | `Dropdown.Content` | "" | 菜单内容
 *trigger* | `"click/hover/focus"` | "click" | 触发方式
 *up* | `boolean` | false | 菜单弹出方向
-*isActive* | `boolean` | false | 默认展开菜单 __(组件初始化生效，不可修改)__
+*isActive* | `boolean` | false | 默认展开菜单
 
 ### Demo
 ```tsx
@@ -43,7 +43,7 @@ render(<div>
         <i className="fa fa-angle-down" aria-hidden="true"></i>
     </span>
 </Dropdown>
-<Dropdown content={content} isActive>
+<Dropdown content={content} isActive isColor="danger">
     <span>auto expended</span>
     <span className="icon is-small">
         <i className="fa fa-angle-down" aria-hidden="true"></i>

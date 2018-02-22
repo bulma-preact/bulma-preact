@@ -30,9 +30,9 @@ Component | Version | Author | Status
 Base | v0.1.0 | shy2850 | Y
 Button | v0.1.0 | shy2850 | Y
 Columns | v0.1.0 | shy2850 | Y
-Dropdown | v0.1.0 | ? | Y
+Dropdown | v0.1.0 | shy2850 | Y
 Form | v0.2.0 | ? | `N`
 Menu | v0.1.0 | shy2850 | Y
 Notification | v0.1.0 | shy2850 | Y
-Tabs | v0.1.0 | ? | `N`
+Tabs | v0.1.0 | shy2850 | Y
 
