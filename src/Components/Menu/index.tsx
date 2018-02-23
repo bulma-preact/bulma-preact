@@ -5,6 +5,7 @@ export interface MenuItem {
     title?: string
     key: string
     item: string | VNode
+    children?: MenuItem[]
 }
 export interface MenuGroup {
     label?: string | VNode
@@ -57,11 +58,19 @@ export default class extends Component<MenuPropsType, MenuStateType> {
             }, []).map((item, index) => {
                 if (Array.isArray(item)) {
                     return <ul className="menu-list" key={`${index}`}>
-                        {item.map(({key, item, className = '', href, title}) => <li key={key}>
+                        {item.map(({key, item, className = '', href, title, children}) => <li key={key}>
                             <a href={href} title={title}
                                 className={className + (key === activeKey ? ' is-active' : '')}
                                 onClick={() => onClick(key)}
                             >{item}</a>
+                            {children && <ul>
+                                {children.map(({ key, item, className = '', href, title, children }) => <li key={key}>
+                                    <a href={href} title={title}
+                                        className={className + (key === activeKey ? ' is-active' : '')}
+                                        onClick={() => onClick(key)}
+                                    >{item}</a>
+                                </li>)}
+                            </ul>}
                         </li>)}
                     </ul>
                 } else {

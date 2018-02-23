@@ -1,5 +1,5 @@
 import { h, VNode, Component } from 'preact'
-import { isClassNames } from '../utils/classnames'
+import { isClassNames } from '../../utils/classnames'
 
 export interface StateType {
     activeIndex: number

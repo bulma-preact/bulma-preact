@@ -20,6 +20,7 @@ export const getClasses = (props: BasePropsType|any, defaultClass): string => {
         isHovered,
         isFocused,
         isLoading,
+        isRounded,
         className
     } = props
     return (defaultClass ? defaultClass + ' ' : '') + isClassNames([
@@ -28,6 +29,7 @@ export const getClasses = (props: BasePropsType|any, defaultClass): string => {
         isFloat,
         isLesses,
         align,
+        isRounded && 'rounded',
         isBoxed && 'boxed',
         isOutlined && 'outlined',
         isActive && 'active',
@@ -37,10 +39,14 @@ export const getClasses = (props: BasePropsType|any, defaultClass): string => {
     ]) + (className ? (' ' + className) : '')
 }
 export default class extends Component<BasePropsType, BaseStateType> {
+    inline = false
     defaultClass = ''
     getClasses = () => getClasses(this.props, this.defaultClass)
     render(node: VNode) {
         const { isDisabled, style } = this.props
-        return <a className={this.getClasses()} disabled={isDisabled} style={style}>{node.children}</a>
+        const className = this.getClasses()
+        return this.inline
+            ? <a className={className} disabled={isDisabled}>{node.children}</a>
+            : <div className={className} disabled={isDisabled}>{node.children}</div>
     }
 }

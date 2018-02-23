@@ -1,11 +1,16 @@
-import { h, VNode } from 'preact'
-import Base from '../utils/Base'
+import { h, VNode, Component } from 'preact'
+import Select from './Select/index'
 
-// TODO
-export default class extends Base {
-    defaultClass = 'notification'
+export interface FromProps extends ComponentBaseState {}
+export interface FormState {}
+
+class Form extends Component<FromProps, FormState> {
     render(node: VNode) {
-        const { isDisabled, style } = this.props
-        return <div className={this.getClasses()} disabled={isDisabled} style={style}>{node.children}</div>
+        return <form {...node.attributes}>{node.children}</form>
     }
+}
+
+export {
+    Form,
+    Select
 }

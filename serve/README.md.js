@@ -25,7 +25,7 @@ const renderMD = md => {
         }
     })
     const result = html.replace(/(<pre><code class="lang-tsx">[\s\S\t\r\n]*?<\/code><\/pre>)/g,
-        '</div>$1<div class="column demo-holder"></div><div class="content">')
+        '</div>$1<div class="demo-holder" style="padding: .5em 0 2em"></div><div class="content">')
     return `<div class="content">${result}</div><script>${demos.join('\n')}</script>`
 }
 
@@ -38,10 +38,10 @@ module.exports = conf => {
     } = conf
     return {
         onSet(pathname, data, store) {
-            const REG = /(src\/)?(\w+\/)?README\.md$/
+            const REG = /(src\/)?((\w+\/){1,2})?README\.md$/
             const match = pathname.match(REG)
             if (match) {
-                const key = match[2] ? match[2].replace('/', '') : 'Index'
+                const key = match[2] ? match[2].replace(/\/$/, '') : 'Index'
                 const html = layout({
                     conf: {
                         basePath: '/'

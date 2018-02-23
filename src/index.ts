@@ -1,27 +1,28 @@
-import Base from './utils/Base'
-import Button from './Button/index'
 import Columns from './Columns/index'
-import Dropdown from './Dropdown/index'
-import Form from './Form/index'
-import Menu from './Menu/index'
-import Notification from './Notification/index'
-import Tabs from './Tabs/index'
+import * as Form from './Form/index'
 
-import classNames from './utils/classnames'
+import {
+    Dropdown,
+    Menu,
+    Tabs
+} from './Components/index'
+
+import {
+    Button,
+    Content,
+    Notification
+} from './Elements/index'
 
 /**
  * @namespace BulmaPreact
  */
 export {
-    Base,
     Button,
     Columns,
+    Content,
     Dropdown,
-    // TODO
     Form,
     Menu,
     Notification,
-
-    // TODO
     Tabs
 }

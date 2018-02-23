@@ -1,6 +1,6 @@
 import { h, VNode, Component } from 'preact'
-import classNames from '../utils/classnames'
-import { getClasses } from '../utils/Base'
+import classNames from '../../utils/classnames'
+import { getClasses } from '../../utils/Base'
 
 export interface StateType extends ComponentBaseState {
 }

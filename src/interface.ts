@@ -20,6 +20,8 @@ interface ComponentBaseProps extends JSX.HTMLAttributes{
     isSize?: Sizes,
     isFloat?: Floats,
     isLesses?: Lesses,
+    isBoxed?: boolean,
+    isRounded?: boolean,
     align?: Alignments
 }
 
@@ -41,11 +43,8 @@ interface Hovered {
 interface Focused {
     isFocused?: boolean;
 }
-interface Boxed {
-    isBoxed?: boolean;
-}
 
-interface ComponentBaseState extends Outlined, Loading, Disabled, Active, Hovered, Focused, Boxed {
+interface ComponentBaseState extends Outlined, Loading, Disabled, Active, Hovered, Focused {
 }
 
 interface Loading {
