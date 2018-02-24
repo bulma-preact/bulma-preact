@@ -10,7 +10,8 @@ import {
 import {
     Button,
     Content,
-    Notification
+    Notification,
+    Progress
 } from './Elements/index'
 
 /**
@@ -24,5 +25,6 @@ export {
     Form,
     Menu,
     Notification,
+    Progress,
     Tabs
 }

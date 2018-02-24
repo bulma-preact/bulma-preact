@@ -46,7 +46,7 @@ export default class extends Component<BasePropsType, BaseStateType> {
         const { isDisabled, style } = this.props
         const className = this.getClasses()
         return this.inline
-            ? <a className={className} disabled={isDisabled}>{node.children}</a>
-            : <div className={className} disabled={isDisabled}>{node.children}</div>
+            ? <a style={style} className={className} disabled={isDisabled}>{node.children}</a>
+            : <div style={style} className={className} disabled={isDisabled}>{node.children}</div>
     }
 }
