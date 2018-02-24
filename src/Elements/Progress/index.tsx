@@ -1,7 +1,7 @@
 import { h, VNode } from 'preact'
 import Base from '../../utils/Base'
 
-export default class extends Base {
+export class Progress extends Base {
     defaultClass = 'progress'
     render(node: VNode) {
         const { style, value, max = 100 } = this.props

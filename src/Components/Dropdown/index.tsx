@@ -12,8 +12,22 @@ export interface PropsType extends StateType {
     up?: boolean 
 }
 
+
+export class Content extends Component<{ className?: string }, any> {
+    render(node: VNode) {
+        const { className } = this.props
+        return <div className={classNames([className, 'dropdown-content'])}>{node.children}</div>
+    }
+}
+export class Item extends Component<{ className?: string, isActive?: boolean }, any> {
+    render(node: VNode) {
+        const { className, isActive } = this.props
+        return <a className={classNames([className, 'dropdown-item', isActive && 'is-active'])}>{node.children}</a>
+    }
+}
+
 let Dropdown_Index = 0
-class Dropdown extends Component<PropsType, StateType> {
+export class Dropdown extends Component<PropsType, StateType> {
     state: StateType
     index: number
     constructor(props: PropsType) {
@@ -83,24 +97,6 @@ class Dropdown extends Component<PropsType, StateType> {
             </div>
         </div>
     }
+    static Content = Content
+    static Item = Item
 }
-
-export class Content extends Component<{ className?: string }, any> {
-    render (node: VNode) {
-        const { className } = this.props
-        return <div className={classNames([className, 'dropdown-content'])}>{node.children}</div>
-    }
-}
-export class Item extends Component<{ className?: string, isActive?: boolean }, any> {
-    render(node: VNode) {
-        const { className, isActive } = this.props
-        return <a className={classNames([className, 'dropdown-item', isActive && 'is-active'])}>{node.children}</a>
-    }
-}
-
-Object.assign(Dropdown, {
-    Content,
-    Item
-})
-
-export default Dropdown

@@ -23,7 +23,7 @@ export interface MenuStateType {
     activeKey?: string
 }
 
-export default class extends Component<MenuPropsType, MenuStateType> {
+export class Menu extends Component<MenuPropsType, MenuStateType> {
     props: MenuPropsType
     state: MenuStateType
     constructor (props: MenuPropsType) {

@@ -1,6 +1,6 @@
 import { h, VNode } from 'preact'
 import Base from '../../utils/Base'
 
-export default class extends Base {
+export class Content extends Base {
     defaultClass = 'content'
 }

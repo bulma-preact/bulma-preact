@@ -22,7 +22,7 @@ export interface Item {
     icon?: string
 }
 
-export default class extends Component<PropsType, StateType> {
+export class Tabs extends Component<PropsType, StateType> {
     props: PropsType
     state: StateType
     constructor(props: PropsType) {
