@@ -7,7 +7,7 @@
   "scripts": {
     "install": "rm -rf docs && git clone https://github.com/bulma-preact/bulma-preact.github.io docs",
     "start": "npm run build && f2e start",
-    "build": "tsc -p tsconfig.build.json && rollup -c && uglifyjs ./dist/bumla-preact.js -o ./dist/bumla-preact.min.js",
+    "build": "rollup -c && uglifyjs ./dist/bumla-preact.js -o ./dist/bumla-preact.min.js --source-map",
     "docs": "f2e build && cd docs && git add . && git commit -m 'update docs' && git push",
     "prepare": "npm run build",
     "test": "tsc && node test/index.js"
@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/bulma-preact/bulma-preact#readme",
   "devDependencies": {
+    "f2e-middle-rollup": "0.0.1",
     "f2e-middle-typescript": "^0.3.3",
     "f2e-server": "^2.8.2",
     "highlight.js": "^9.12.0",
@@ -39,6 +40,7 @@
     "preact": "^8.2.7",
     "preact-render-to-string": "^3.7.0",
     "rollup": "^0.55.5",
+    "rollup-plugin-typescript2": "^0.11.1",
     "typescript": "^2.7.2",
     "uglify-es": "^3.3.10"
   }

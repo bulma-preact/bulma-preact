@@ -1,5 +1,10 @@
-export default {
-    input: './lib/index.js',
+const typescript = require('rollup-plugin-typescript2')
+
+module.exports = {
+    input: './src/index.ts',
+    plugins: [
+        typescript()
+    ],
     external: ['preact'],
     output: {
         name: 'BumlaPreact',
