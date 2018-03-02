@@ -5,6 +5,7 @@ export interface BaseStateType extends ComponentBaseState, Loading {
 }
 
 export interface BasePropsType extends ComponentBaseProps, BaseStateType {
+    key:any
 }
 
 export const getClasses = (props: BasePropsType|any, defaultClass): string => {
