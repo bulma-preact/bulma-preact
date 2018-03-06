@@ -7,6 +7,7 @@
         "jsx": "react",
         "jsxFactory": "h",
         "outDir": "lib/",
+        "sourceMap": true,
         "target": "esnext"
     },
     "include": [

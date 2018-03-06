@@ -4,18 +4,25 @@ const build = ({
     docs: !0
 })[argv[argv.length - 1]]
 
-const getModuleId = p => p
 module.exports = {
     livereload: !build,
     build,
     gzip: true,
     include: /__include\(["'\s]+([^"'\s]+)["'\s]+(?:,["'\s]+([^"'\s]+)["'\s]+)?\)/g,
-    buildFilter: p => !p || /^(src|demo|preact|index|README)/.test(p),
+    buildFilter: p => !p || /^(src|index|README)/.test(p),
     middlewares: [
-        { middleware: 'template', test: /(config\.js)$/ },
         require('./serve/IndexPage'),
         require('./serve/README.md'),
-        { middleware: 'typescript', getModuleId }
+        { middleware: 'rollup', mapConfig (cfg) {
+            delete cfg.external
+            cfg.output = {
+                name: 'BulmaPreact',
+                file: 'bulma-preact.standalone.js',
+                sourcemap: 'bulma-preact.standalone.js.map',
+                format: 'umd'
+            }
+            return cfg
+        } }
     ],
     bundles: [
         {

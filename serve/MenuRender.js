@@ -1,6 +1,6 @@
 const { h } = require('preact')
 const render = require('preact-render-to-string')
-const { Menu } = require('../dist/bumla-preact')
+const { Menu } = require('../dist/bulma-preact')
 const { readdirSync, existsSync, statSync } = require('fs')
 const { join } = require('path')
 

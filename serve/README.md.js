@@ -6,10 +6,21 @@ const { join } = require('path')
 const { template } = require('lodash')
 const MenuRender = require('./MenuRender')
 
-const REG_AMD = /(^define\(|[^.\w]define\()(?!\s*['"()])/
-const setModuleId = (code, moduleId) => code.replace(REG_AMD, `$1"${moduleId}", `)
+// const setModuleId = (code, moduleId) => code.replace(/(^define\(|[^.\w]define\()(?!\s*['"()])/, `$1"${moduleId}", `)
+const setModuleId = (code, moduleId) => code.replace(/require\("(.*?)"\)/g, (all, m) => {
+    const keywords = {
+        'bulma-preact': 'BulmaPreact',
+        'preact': 'BulmaPreact.Preact'
+    }
+    return keywords[m]
+})
 
-const tsconfig = require('../tsconfig.json').compilerOptions
+const tsconfig = {
+    "module": "commonjs",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "target": "es2015"
+}
 const renderMD = md => {
     let demos = []
     const html = marked(md, {
@@ -19,14 +30,15 @@ const renderMD = md => {
                 const index = demos.length
                 demos.push(setModuleId(transpile(`
                 const container = document.querySelectorAll('.content-holder .lang-tsx')[${index}].parentNode.nextElementSibling
-                ` + code, tsconfig), `demo-code-${index}`) + `require(['demo-code-${index}'])`)
+                ` + code, tsconfig), `demo-code-${index}`))
             }
             return highlightAuto(code).value
         }
     })
     const result = html.replace(/(<pre><code class="lang-tsx">[\s\S\t\r\n]*?<\/code><\/pre>)/g,
         '</div>$1<div class="demo-holder" style="padding: .5em 0 2em"></div><div class="content">')
-    return `<div class="content">${result}</div><script>${demos.join('\n')}</script>`
+    const scripts = demos.map(demo => `(function (exports) {${demo}})({})`).join(';\n')
+    return `<div class="content">${result}</div><script>${scripts}</script>`
 }
 
 
