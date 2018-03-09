@@ -43,11 +43,21 @@ export default class extends Component<BasePropsType, BaseStateType> {
     inline = false
     defaultClass = ''
     getClasses = () => getClasses(this.props, this.defaultClass)
+    getEvents = () => {
+        const props = this.props
+        let res = {}
+        Object.keys(props).map(k => {
+            if (/^on[A-Z]/.test(k)) {
+                res[k] = props[k]
+            }
+        })
+        return res
+    }
     render(node: VNode) {
         const { isDisabled, style } = this.props
         const className = this.getClasses()
         return this.inline
-            ? <a style={style} className={className} disabled={isDisabled}>{node.children}</a>
-            : <div style={style} className={className} disabled={isDisabled}>{node.children}</div>
+            ? <a style={style} className={className} disabled={isDisabled} {...this.getEvents()}>{node.children}</a>
+            : <div style={style} className={className} disabled={isDisabled} {...this.getEvents()}>{node.children}</div>
     }
 }

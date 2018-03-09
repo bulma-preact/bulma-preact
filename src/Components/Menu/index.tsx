@@ -9,7 +9,8 @@ export interface MenuItem {
 }
 export interface MenuGroup {
     label?: string | VNode
-    list: MenuItem[]
+    href?: string
+    list?: MenuItem[]
 }
 export interface MenuPropsType {
     onSelect?: {

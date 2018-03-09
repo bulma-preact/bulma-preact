@@ -5,11 +5,15 @@
         "declaration": true,
         "declarationDir": "lib/",
         "module": "esnext",
+        "lib": [
+            "es2015",
+            "dom"
+        ],
         "jsx": "react",
         "jsxFactory": "h",
         "outDir": "lib/",
         "sourceMap": true,
-        "target": "esnext"
+        "target": "es5"
     },
     "include": [
         "src/*.ts",

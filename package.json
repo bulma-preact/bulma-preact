@@ -1,6 +1,6 @@
 {
   "name": "bulma-preact",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "bulma components build by preact",
   "module": "lib/index.js",
   "typings": "dist/index.d.ts",
@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/bulma-preact/bulma-preact#readme",
   "devDependencies": {
+    "@types/node": "^9.4.7",
     "f2e-middle-rollup": "^0.3.2",
     "f2e-middle-typescript": "^0.3.3",
     "f2e-server": "^2.8.17",
@@ -40,7 +41,7 @@
     "lodash": "^4.17.5",
     "marked": "^0.3.17",
     "preact-render-to-string": "^3.7.0",
-    "rollup": "^0.56.4",
+    "rollup": "^0.56.5",
     "rollup-plugin-commonjs": "^9.0.0",
     "rollup-plugin-node-resolve": "^3.0.3",
     "rollup-plugin-typescript2": "^0.11.1",

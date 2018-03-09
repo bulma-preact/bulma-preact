@@ -50,3 +50,7 @@ interface ComponentBaseState extends Outlined, Loading, Disabled, Active, Hovere
 interface Loading {
     isLoading?: boolean;
 }
+
+interface Event {
+    
+}

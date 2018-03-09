@@ -11,6 +11,7 @@ module.exports = {
     include: /__include\(["'\s]+([^"'\s]+)["'\s]+(?:,["'\s]+([^"'\s]+)["'\s]+)?\)/g,
     buildFilter: p => !p || /^(src|index|README)/.test(p),
     middlewares: [
+        { middleware: 'template', test: /\.(md|html)$/ },
         require('./serve/IndexPage'),
         require('./serve/README.md'),
         { middleware: 'rollup', mapConfig (cfg) {
@@ -23,12 +24,6 @@ module.exports = {
             }
             return cfg
         } }
-    ],
-    bundles: [
-        {
-            test: /(src|demo)\/(?!config).*\.[jet]sx?$/,
-            dist: 'demo/config.js'
-        }
     ],
     output: require('path').join(__dirname, './docs')
 }

@@ -42,7 +42,7 @@ const renderMD = md => {
 }
 
 
-const layout = template(readFileSync(join(__dirname, '../demo/layout.htm')).toString())
+const layout = template(readFileSync(join(__dirname, './layout.htm')).toString())
 
 module.exports = conf => {
     const {
