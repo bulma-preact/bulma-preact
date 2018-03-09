@@ -1,5 +1,3 @@
-declare function __include(src, min?)
-
 /**
  * Syntax
  */

@@ -8,7 +8,6 @@ module.exports = {
     livereload: !build,
     build,
     gzip: true,
-    include: /__include\(["'\s]+([^"'\s]+)["'\s]+(?:,["'\s]+([^"'\s]+)["'\s]+)?\)/g,
     buildFilter: p => !p || /^(src|index|README)/.test(p),
     middlewares: [
         { middleware: 'template', test: /\.(md|html)$/ },

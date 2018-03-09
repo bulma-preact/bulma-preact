@@ -1,5 +1,5 @@
-## Messages
-create Content with color, etc.
+## Modal
+create Modal handle active
 
 ### Props
 ```ts
