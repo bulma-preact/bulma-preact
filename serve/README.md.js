@@ -48,6 +48,7 @@ module.exports = conf => {
     const {
         build
     } = conf
+    const now = Date.now()
     return {
         onSet(pathname, data, store) {
             const REG = /(src\/)?((\w+\/){1,2})?README\.md$/
@@ -55,6 +56,7 @@ module.exports = conf => {
             if (match) {
                 const key = match[2] ? match[2].replace(/\/$/, '') : 'Index'
                 const html = layout({
+                    now: build ? now : Date.now(),
                     conf: {
                         basePath: '/'
                     }
