@@ -1,11 +1,14 @@
 const typescript = require('rollup-plugin-typescript2')
 const commonjs = require('rollup-plugin-commonjs')
 const nodeResolve = require('rollup-plugin-node-resolve')
+const { join } = require('path')
 
 module.exports = {
     input: 'src/index.ts',
     plugins: [
-        typescript(),
+        typescript({
+            tsconfig: join(__dirname, './tsconfig.es5.json')
+        }),
         nodeResolve(),
         commonjs()
     ],
