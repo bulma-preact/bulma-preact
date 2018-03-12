@@ -1,6 +1,8 @@
 import { h, VNode, Component } from 'preact'
 import Select from './Select/index'
 import Radio from './Radio/index'
+import Checkbox from './Checkbox/index'
+
 
 export interface FromProps extends ComponentBaseState {}
 export interface FormState {}
@@ -14,5 +16,6 @@ class Form extends Component<FromProps, FormState> {
 export {
     Form,
     Select,
-    Radio
+    Radio,
+    Checkbox
 }

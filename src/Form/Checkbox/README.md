@@ -28,7 +28,6 @@ import { render, h,Component } from 'preact'
 import { Form, Columns } from 'bulma-preact'
 import { render, h } from 'preact'
 const { Checkbox } = Form
-
 const options = [
     { name: 'Form', value: '1'},
     { name: 'Elements', value: '2'},
@@ -53,35 +52,7 @@ class CheckboxExample extends Component {
     return <div>
       <div>
         基本用法
-                <Checkbox value="checkbox">a</Checkbox>
-      </div>
-      <div>
-        一组互斥的 Checkbox 配合使用。
-            </div>
-      <div>
-        <Checkbox.CheckboxGroup defaultValue={1}>
-          <Checkbox value={1}>A</Checkbox>
-          <Checkbox value={2}>B</Checkbox>
-          <Checkbox value={3}>C</Checkbox>
-          <Checkbox value={4}>D</Checkbox>
-        </Checkbox.CheckboxGroup>
-      </div>
-      <div>
-        Checkbox 禁用
-            </div>
-      <div>
-        <Checkbox.CheckboxGroup options={options} />
-      </div>
-      <div>
-        Checkbox onChange 事件(style属性，目前有点小bug)
-            </div>
-      <div>
-        <Checkbox.CheckboxGroup value={this.state.value} onChange={this.onChange} options={options} >
-          <Checkbox value={1} style={style}>A</Checkbox>
-          <Checkbox value={2} style={style}>B</Checkbox>
-          <Checkbox value={3} style={style}>C</Checkbox>
-          <Checkbox value={4} style={style}>D</Checkbox>
-        </Checkbox.CheckboxGroup>
+          <Checkbox></Checkbox>
       </div>
     </div>
   }

@@ -69,12 +69,11 @@ class Checkbox extends Component<CheckboxType, StateType> {
         // const checkboxClassName = this.getClasses('checkbox')
         let _checked = this.state.checked;
         return (
-            
                 <label class="checkbox" style={style}>
                     <input type="checkbox" name={name} value={value}
                         onChange={this.onChange}
                         disabled={disabled}
-                        checked={!!_checked} 
+                        checked
                         ref={this.saveInput}/>
                     {this.props.children}
                 </label>
