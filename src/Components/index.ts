@@ -1,7 +1,0 @@
-export { Dropdown } from './Dropdown/index'
-export { Menu } from './Menu/index'
-export { Navbar } from './Navbar/index'
-export { Tabs } from './Tabs/index'
-export { Breadcrumb } from './Breadcrumb/index'
-export { Messages } from './Messages/index'
-export { Modal, ModalCard } from './Modal/index'
