@@ -20,7 +20,7 @@ export default ({ id, start, end, isActive }: NavbarMenuProps) => <div id={id} c
                 </a>)}
             </div>
         </div> : <a key={'' + i} className="navbar-item" href={item.href}>
-            {item.href ? <a href={item.href}>{item.label}</a> : item.label}
+            {item.label}
         </a>)}
     </div>
 </div>
