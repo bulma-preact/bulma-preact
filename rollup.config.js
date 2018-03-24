@@ -12,11 +12,12 @@ module.exports = {
         nodeResolve(),
         commonjs()
     ],
-    external: ['preact'],
+    external: ['preact', 'ipreact'],
     output: {
         name: 'BulmaPreact',
         globals: {
-            preact: 'Preact'
+            preact: 'Preact',
+            ipreact: 'IPreact'
         },
         file: 'dist/bulma-preact.js',
         sourcemap: 'dist/bulma-preact.js.map',

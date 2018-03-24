@@ -11,10 +11,12 @@ export interface MessagesProps extends BasePropsType {
 
 ### Demo
 ``` tsx
-import { Messages } from 'bulma-preact'
+import { Messages, Button } from 'bulma-preact'
 import { render, h } from 'preact'
 
+const onClick = () => Messages.showMessage('123')
 render(<div className="panel">
+    <Button onClick={onClick}>showMessage</Button>
     <Messages isColor="link" header="message 1" showClose onClose={() => alert(1)}>
         <h2>h2</h2>
         <p>content, content<br/> ok!</p>
