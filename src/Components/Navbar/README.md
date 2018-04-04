@@ -34,7 +34,8 @@ const brand = {
 }
 
 const menu = {
-    start: [
+
+    end: [
         {
             label: 'Form',
             href: '../../Form/'
