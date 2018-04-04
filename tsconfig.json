@@ -9,7 +9,7 @@
         "jsxFactory": "h",
         "outDir": "lib/",
         "sourceMap": true,
-        "target": "esnext"
+        "target": "es2015"
     },
     "include": [
         "src/*.ts",
