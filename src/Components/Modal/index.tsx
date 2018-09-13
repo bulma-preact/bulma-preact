@@ -40,7 +40,7 @@ export class Modal extends Component<ModalProps, { isActive : boolean }> {
             isActive: false
         })
     }
-    render(node) {
+    render() {
         const { style, onClose, showClose, modalContent } = this.props
         const { isActive } = this.state
         const className = getClasses(Object.assign({}, this.props, { isActive }), 'modal')
@@ -55,7 +55,7 @@ export class Modal extends Component<ModalProps, { isActive : boolean }> {
 }
 
 export class ModalCard extends Modal {
-    render(node) {
+    render() {
         const { style, onClose, showClose, card } = this.props
         const { isActive } = this.state
         const className = getClasses(Object.assign({}, this.props, { isActive }), 'modal')

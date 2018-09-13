@@ -70,10 +70,10 @@ export class Dropdown extends Component<PropsType, StateType> {
             })
         }, 200)
     }
-    render(node: VNode) {
+    render() {
         const { state, props, onClick } = this
         const { isActive } = state
-        const { content = '', align = 'left', trigger = 'click', up = false } = props
+        const { content = '', align = 'left', trigger = 'click', up = false, children } = props
         const btnProps = Object.assign({}, props, {isActive: false})
         return <div className={classNames({
             'dropdown': true,
@@ -89,7 +89,7 @@ export class Dropdown extends Component<PropsType, StateType> {
                     aria-haspopup="true"
                     aria-controls={`dropdown-menu${this.index}`}
                 >
-                    {node.children}
+                    {children}
                 </button>
             </div>
             <div className="dropdown-menu" id={`dropdown-menu${this.index}`} role="menu">

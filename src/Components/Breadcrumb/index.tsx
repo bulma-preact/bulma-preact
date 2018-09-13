@@ -24,7 +24,7 @@ export class Breadcrumb extends Component<BreadcrumbPropsType, MenuStateType> {
             activeIndex: props.activeIndex || (props.items ? props.items.length - 1 : 0)
         }
     }
-    render(node: VNode) {
+    render() {
         const { items = [], separator } = this.props
         const { activeIndex } = this.state
         const className = 'breadcrumb' + (separator ? ` has-${separator}-separator` : '')

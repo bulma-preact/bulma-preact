@@ -3,9 +3,9 @@ import Base from '../../utils/Base'
 
 export class Progress extends Base {
     defaultClass = 'progress'
-    render(node: VNode) {
-        const { style, value, max = 100 } = this.props
+    render() {
+        const { style, value, max = 100, children } = this.props
         const className = this.getClasses()
-        return <progress style={style} className={className} value={value} max={max}>{node.children}</progress>
+        return <progress style={style} className={className} value={value} max={max}>{children}</progress>
     }
 }

@@ -20,8 +20,8 @@ export class Card extends Component<CardProps, {}> {
     constructor(props: CardProps) {
         super(props)
     }
-    render (node: VNode) {
-        const { image, header, footer} = this.props
+    render () {
+        const { image, header, footer, children} = this.props
         return <div className={getClasses(this.props, 'card')}>
             {header && <div className="card-header">
                 <div className="card-header-title">{header.title}</div>
@@ -30,7 +30,7 @@ export class Card extends Component<CardProps, {}> {
                 </a>}
             </div>}
             {image && <div className="card-image">{image}</div>}
-            <div className="card-content">{node.children}</div>
+            <div className="card-content">{children}</div>
             {footer && footer.buttons && <div className="card-footer">
                 {footer.buttons.map((item, index) => <a className="card-footer-item" key={'' + index} onClick={item.onClick}>{item.name}</a>)}
             </div>}

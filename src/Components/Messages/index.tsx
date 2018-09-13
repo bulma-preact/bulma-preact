@@ -14,8 +14,8 @@ export class Messages extends Component<MessagesProps, {}> {
     constructor (props) {
         super(props)
     }
-    render (node) {
-        const { style, header, onClose, showClose } = this.props
+    render () {
+        const { style, header, onClose, showClose, children } = this.props
         const className = getClasses(this.props, 'message')
         return <article style={style} className={className}>
             <div className="message-header">
@@ -23,7 +23,7 @@ export class Messages extends Component<MessagesProps, {}> {
                 {showClose && <button className="delete" aria-label="delete" onClick={e => onClose()}></button>}
             </div>
             <div className="message-body">
-                {node.children}
+                {children}
             </div>
         </article>
     }

@@ -13,6 +13,12 @@ module.exports = {
         commonjs()
     ],
     external: ['preact', 'ipreact'],
+    onwarn: function (warning) {
+        switch (warning.code) {
+            case 'THIS_IS_UNDEFINED': return
+        }
+        console.warn(warning.message)
+    },
     output: {
         name: 'BulmaPreact',
         globals: {

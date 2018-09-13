@@ -40,7 +40,7 @@ export class Menu extends Component<MenuPropsType, MenuStateType> {
             activeKey: key
         })
     }
-    render(node: VNode) {
+    render() {
         const {
             className = '',
             menus = []

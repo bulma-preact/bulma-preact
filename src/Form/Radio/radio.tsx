@@ -64,7 +64,7 @@ class Radio extends Component<RadioType, StateType> {
     saveInput = (node) => {
         this.input = node;
     }
-    render(node: VNode) {
+    render() {
         const { style = {}, defaultChecked = false, checked, name, value,disabled, } = this.props
         // const radioClassName = this.getClasses('radio')
         let _checked = this.state.checked;

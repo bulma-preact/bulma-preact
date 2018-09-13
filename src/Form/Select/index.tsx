@@ -24,7 +24,7 @@ class Select extends Component<SelectType, BaseStateType> {
         const { onChange } = this.props
         onChange && onChange(e)
     }
-    render(node: VNode) {
+    render() {
         const { isDisabled, style, name, options = [], value = '', icon, multiple, size } = this.props
         const selectClassName = this.getClasses('select')
         const iconClassName = this.getClasses('icon')
