@@ -8,7 +8,7 @@ export interface BasePropsType extends ComponentBaseProps, BaseStateType {
     key:any
 }
 
-export const getClasses = (props: BasePropsType|any, defaultClass): string => {
+export const getClasses = (props: BasePropsType|any, defaultClass: string): string => {
     const {
         isBoxed,
         isColor,

@@ -61,8 +61,8 @@ module.exports = conf => {
                         basePath: '/'
                     }
                 }).replace('$[placeholder]', `
-    <div class="container columns">
-        <div class="column is-2">${MenuRender(key, build)}</div>
+    <div class="columns">
+        <div class="column is-2 is-primary">${MenuRender(key, build)}</div>
         <div class="column content-holder">${renderMD(data.toString())}</div>
     </div>
                 `)

@@ -33,16 +33,16 @@
   },
   "homepage": "https://github.com/bulma-preact/bulma-preact#readme",
   "devDependencies": {
-    "@types/node": "^9.6.31",
+    "@types/node": "^9.6.41",
     "f2e-middle-rollup": "^0.3.3",
     "f2e-middle-typescript": "^0.3.3",
-    "f2e-server": "^2.9.11",
-    "highlight.js": "^9.12.0",
+    "f2e-server": "^2.9.15",
+    "highlight.js": "^9.13.1",
     "lodash": "^4.17.11",
     "marked": "^0.3.19",
     "preact-render-to-string": "^3.8.2",
     "rollup": "^0.56.5",
-    "rollup-plugin-commonjs": "^9.1.6",
+    "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-typescript2": "^0.11.1",
     "rollup-plugin-uglify": "^3.0.0",
@@ -51,6 +51,6 @@
   },
   "dependencies": {
     "ipreact": "^0.1.8",
-    "preact": "^8.3.1"
+    "preact": "^8.4.2"
   }
 }

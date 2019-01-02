@@ -44,7 +44,7 @@ const showItems = [
     <h3>Nothing!</h3>
 ]
 
-const onTabs = index => alert(items[index].title)
+const onTabs = index => console.log(items[index].title)
 
 render(<div>
     <Tabs items={items} activeIndex={0} isBoxed align="centered" /><br/>

@@ -14,6 +14,11 @@
     <link href="https://cdn.bootcss.com/bulma/0.6.2/css/bulma.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body > .columns {margin: 0;}
+        .content-holder {height: calc(100vh - .75rem); overflow-y: auto;}
+        .content-holder pre { width: 99%; overflow-x: auto; }
+    </style>
     <script src="<%-conf.basePath%>bulma-preact.standalone.js?<%-now%>"></script>
 </head>
 <body>
