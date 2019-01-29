@@ -56,7 +56,7 @@ export class Modal extends Component<ModalProps, { isActive : boolean }> {
             {showClose && <button className="modal-close is-large" aria-label="close" onClick={this.onClose}></button>}
         </div>
     }
-    static showModal(info: string | VNode, options: ModalProps) { }
+    static showModal(info: string | VNode, options?: ModalProps) { }
     static close() { }
     static hideModal() {}
 }
