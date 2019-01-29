@@ -1,12 +1,15 @@
-import { h, VNode, Component } from 'preact'
+import { h, VNode, Component, render } from 'preact'
 import Base, { BasePropsType, getClasses } from '../../utils/Base'
 import { Card, CardProps } from './Card'
+import IPreact from 'ipreact'
+const { connect, getState, dispatch } = IPreact()({})
 
 export interface ModalProps extends BasePropsType {
     isActive?: boolean
     showClose?: boolean
     onClose?: Function
     card?: CardProps
+    withBackground?: boolean
     modalContent?: string | VNode | CardProps
 }
 
@@ -18,6 +21,7 @@ export class Modal extends Component<ModalProps, { isActive : boolean }> {
         }
     }
     componentWillReceiveProps(nextProps: ModalProps) {
+        console.log(nextProps.isActive)
         if (this.state.isActive !== nextProps.isActive) {
             this.setState({
                 isActive: nextProps.isActive
@@ -41,27 +45,49 @@ export class Modal extends Component<ModalProps, { isActive : boolean }> {
         })
     }
     render() {
-        const { style, onClose, showClose, modalContent } = this.props
+        const { style, showClose, modalContent, withBackground = true } = this.props
         const { isActive } = this.state
         const className = getClasses(Object.assign({}, this.props, { isActive }), 'modal')
         return <div style={style} className={className}>
-            <div className="modal-background"></div>
+            {withBackground && <div className="modal-background"></div>}
             <div className="modal-content">
                 {modalContent}
             </div>
             {showClose && <button className="modal-close is-large" aria-label="close" onClick={this.onClose}></button>}
         </div>
     }
+    static showModal(info: string | VNode, options: ModalProps) { }
+    static close() { }
+    static hideModal() {}
 }
 
 export class ModalCard extends Modal {
     render() {
-        const { style, onClose, showClose, card } = this.props
+        const { style, onClose, withBackground, card } = this.props
         const { isActive } = this.state
         const className = getClasses(Object.assign({}, this.props, { isActive }), 'modal')
         return <div style={style} className={className}>
-            <div className="modal-background"></div>
+            {withBackground && <div className="modal-background"></div>}
             <Card {...card} onClose={this.onClose} isSize="small" />
         </div>
     }
+}
+
+export const ModalShow = connect(() => getState())((props: ModalProps) => <Modal {...props} onClose={() => {
+    props.onClose && props.onClose()
+    dispatch(state => ({...state, isActive: false}))
+}}/>)
+
+let modal: VNode<Modal>
+Modal.showModal = (modalContent, options = {showClose: true, withBackground: true}) => {
+    if (!modal) {
+        render(modal = <ModalShow />, document.body)
+    }
+    dispatch((state): ModalProps => {
+        const { showClose, withBackground } = options
+        return { ...state, modalContent, showClose, withBackground, isActive: true }
+    })
+}
+Modal.hideModal = Modal.close = () => {
+    dispatch(state => ({ ...state, isActive: false }))
 }

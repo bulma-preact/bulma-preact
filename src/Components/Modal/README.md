@@ -8,7 +8,9 @@ export interface ModalProps extends BasePropsType {
     isActive?: boolean
     showClose?: boolean
     onClose?: Function
-    modalContent?: string|VNode
+    card?: CardProps
+    withBackground?: boolean
+    modalContent?: string | VNode | CardProps
 }
 // Modal.Card
 export interface CardProps extends BasePropsType {
@@ -24,17 +26,23 @@ export interface CardProps extends BasePropsType {
         })[]
     }
 }
+export class Modal {
+    static showModal(info: string | VNode, options: ModalProps) { }
+    static hideModal() {}
+}
 ```
 
 ### Demo
 ``` tsx
-import { Modal, Button, Card, ModalCard } from 'bulma-preact'
+import { Modal, Button, Card, ModalCard, Button } from 'bulma-preact'
 import { render, h, Component } from 'preact'
 
 const modalContent = <div className="box">
     <h2>h2</h2>
     <p>content, content<br/> ok!</p>
 </div>
+
+
 
 class ModalShow extends Component {
     constructor (props) {
@@ -59,7 +67,6 @@ class ModalShow extends Component {
                 ]
             }
         }
-
         return <span>
             <Button onClick={this.onClick}>{node.children}</Button>
             {this.props.isCard
@@ -73,9 +80,23 @@ class ModalShow extends Component {
         </span>
     }
 }
+
 render(<div className="buttons">
     <ModalShow>Open Modal</ModalShow>
     <ModalShow isCard>Open Card Modal</ModalShow>
     <ModalShow innerCard>Open Inner Card Modal</ModalShow>
+    <Button onClick={() => Modal.showModal(modalContent)}>showModal(Box)</Button>
+    <Button onClick={() => Modal.showModal(
+        <Card className="panel" header={{title: 'header'}} footer={{
+            buttons: [
+                {name: 'Yes', isColor: 'success', onClick: (e) => { Modal.close() }},
+                {name: 'No', onClick: (e) => {alert('No'); Modal.close()} }
+            ]
+        }}>nothing!</Card>,
+        {
+            withBackground: false,
+            showClose: false
+        }
+    )}>showModal(Card with buttons)</Button>
 </div>, container)
 ```
