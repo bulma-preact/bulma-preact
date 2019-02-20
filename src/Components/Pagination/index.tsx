@@ -13,8 +13,7 @@ export interface PaginationProps extends BasePropsType{
 }
 
 export interface PaginationState {
-    groupCount?: number,
-    startPage?: number,
+    groupCount?: number
 }
 
 export class Pagination extends Component<PaginationProps, PaginationState> {
