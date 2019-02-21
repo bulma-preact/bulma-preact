@@ -1,6 +1,6 @@
 {
   "name": "bulma-preact",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "bulma components build by preact",
   "module": "lib/index.js",
   "typings": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "build": "tsc && rollup -c && uglifyjs ./dist/bulma-preact.js -o ./dist/bulma-preact.min.js --source-map",
     "builddocs": "f2e build",
     "docs": "f2e build && cd docs && git add . && git commit -m 'update docs' && git push",
-    "prepare": "npm run build",
+    "prepublish": "npm run build",
     "test": "tsc && node test/index.js"
   },
   "files": [
