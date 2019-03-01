@@ -1,4 +1,4 @@
-import { h, VNode, Component, render } from 'preact'
+import { h, VNode, Component, render, FunctionalComponent } from 'preact'
 import Base, { BasePropsType, getClasses } from '../../utils/Base'
 import { Card, CardProps } from './Card'
 import IPreact from 'ipreact'
@@ -10,7 +10,7 @@ export interface ModalProps extends BasePropsType {
     onClose?: Function
     card?: CardProps
     withBackground?: boolean
-    modalContent?: string | VNode | CardProps
+    modalContent?: string | VNode | CardProps | FunctionalComponent
 }
 
 export class Modal extends Component<ModalProps, { isActive : boolean }> {
@@ -21,7 +21,6 @@ export class Modal extends Component<ModalProps, { isActive : boolean }> {
         }
     }
     componentWillReceiveProps(nextProps: ModalProps) {
-        console.log(nextProps.isActive)
         if (this.state.isActive !== nextProps.isActive) {
             this.setState({
                 isActive: nextProps.isActive
@@ -51,12 +50,12 @@ export class Modal extends Component<ModalProps, { isActive : boolean }> {
         return <div style={style} className={className}>
             {withBackground && <div className="modal-background"></div>}
             <div className="modal-content">
-                {modalContent}
+                {typeof modalContent === 'function' ? modalContent({}) : modalContent}
             </div>
             {showClose && <button className="modal-close is-large" aria-label="close" onClick={this.onClose}></button>}
         </div>
     }
-    static showModal(info: string | VNode, options?: ModalProps) { }
+    static showModal(info: string | VNode | FunctionalComponent, options?: ModalProps) { }
     static close() { }
     static hideModal() {}
 }
