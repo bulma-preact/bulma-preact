@@ -5,10 +5,7 @@ import { getClasses } from '../../utils/Base'
 
 export interface NavbarProps extends ComponentBaseProps{
     brand: NavbarBrandProps,
-    menu: NavbarMenuProps,
-    onLink?: {
-        (key: string): void
-    }
+    menu: NavbarMenuProps
 }
 
 let index = 0
@@ -18,7 +15,7 @@ export class Navbar extends Component<NavbarProps, { isActive: boolean}> {
     constructor(props: NavbarProps) {
         super(props)
         let id = 'bulma-preact-navbar-' + (++index)
-        this.menu = { id, start: props.menu.start, end: props.menu.end }
+        this.menu = Object.assign({id}, props.menu)
         this.brand = Object.assign({dataTarget: id}, props.brand)
         this.state = {
             isActive: false
@@ -30,7 +27,7 @@ export class Navbar extends Component<NavbarProps, { isActive: boolean}> {
     render () {
         const { brand, menu } = this
         const { isActive } = this.state
-        return <div className={getClasses(this.props, 'navbar')}>
+        return <div className={getClasses(this.props, 'navbar')} >
             <Brand {...brand} onToggle={this.onToggle} isActive={isActive}/>
             <Menu {...menu} isActive={isActive}/>
         </div>

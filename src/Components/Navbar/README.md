@@ -34,7 +34,10 @@ const brand = {
 }
 
 const menu = {
-
+    onLink: (e, item) => {
+        console.log(item)
+        e.preventDefault()
+    },
     end: [
         {
             label: 'Form',
