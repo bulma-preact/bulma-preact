@@ -1,5 +1,6 @@
 import { h, VNode, Component } from 'preact'
 import Base, { BasePropsType, getClasses } from '../../utils/Base'
+import { Colors } from '../../interface';
 
 export interface CardProps extends BasePropsType {
     header?: VNode

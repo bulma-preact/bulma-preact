@@ -1,5 +1,6 @@
 import { h, VNode, Component } from 'preact'
 import classNames from '../utils/classnames'
+import { ColumnSizes } from '../interface';
 
 export interface StateType { }
 

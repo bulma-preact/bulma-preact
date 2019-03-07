@@ -1,6 +1,7 @@
 import { h, VNode, Component } from 'preact'
 import Select from './Select/index'
 import Radio from './Radio/index'
+import { ComponentBaseState } from '../interface';
 
 export interface FromProps extends ComponentBaseState {}
 export interface FormState {}

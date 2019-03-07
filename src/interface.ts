@@ -1,19 +1,19 @@
 /**
  * Syntax
  */
-type Colors = 'primary' | 'link' | 'info' | 'success' | 'warning' | 'danger'
-type Sizes = 'small' | 'medium' | 'large'
+export type Colors = 'primary' | 'link' | 'info' | 'success' | 'warning' | 'danger'
+export type Sizes = 'small' | 'medium' | 'large'
 
 /**
  * Helpers
  */
-type Floats = 'clearfix' | 'pulled-left' | 'pulled-right'
-type Lesses = 'marginless' | 'paddingless' | 'radiusless' | 'shadowless'
-type Alignments = 'left' | 'centered' | 'right';
+export type Floats = 'clearfix' | 'pulled-left' | 'pulled-right'
+export type Lesses = 'marginless' | 'paddingless' | 'radiusless' | 'shadowless'
+export type Alignments = 'left' | 'centered' | 'right';
 
-type ColumnSizes = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
+export type ColumnSizes = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
 
-interface ComponentBaseProps extends JSX.HTMLAttributes{
+export interface ComponentBaseProps extends JSX.HTMLAttributes{
     isColor?: Colors,
     isSize?: Sizes,
     isFloat?: Floats,
@@ -23,32 +23,32 @@ interface ComponentBaseProps extends JSX.HTMLAttributes{
     align?: Alignments
 }
 
-interface Outlined {
+export interface Outlined {
     isOutlined?: boolean
 }
-interface Loading {
+export interface Loading {
     isLoading?: boolean
 }
-interface Disabled {
+export interface Disabled {
     isDisabled?: boolean
 }
-interface Active {
+export interface Active {
     isActive?: boolean;
 }
-interface Hovered {
+export interface Hovered {
     isHovered?: boolean;
 }
-interface Focused {
+export interface Focused {
     isFocused?: boolean;
 }
 
-interface ComponentBaseState extends Outlined, Loading, Disabled, Active, Hovered, Focused {
+export interface ComponentBaseState extends Outlined, Loading, Disabled, Active, Hovered, Focused {
 }
 
-interface Loading {
+export interface Loading {
     isLoading?: boolean;
 }
 
-interface Event {
+export interface Event {
     
 }

@@ -2,6 +2,7 @@ import { h, VNode, Component } from 'preact'
 import classNames from '../../utils/classnames'
 import Base, { BasePropsType, BaseStateType, getClasses } from '../../utils/Base'
 import RadioGroup from './group'
+import { ComponentBaseState } from '../../interface';
 // import RadioButton from './radioButton'
 
 export interface RadioType extends BasePropsType {

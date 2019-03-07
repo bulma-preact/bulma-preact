@@ -1,5 +1,6 @@
 import { isClassNames } from '../utils/classnames'
 import { h, Component, VNode } from 'preact'
+import { ComponentBaseProps, ComponentBaseState, Loading } from '../interface';
 
 export interface BaseStateType extends ComponentBaseState, Loading {
 }

@@ -2,6 +2,7 @@ import { h, VNode, Component } from 'preact'
 import Brand, { NavbarBrandProps } from './Brand'
 import Menu, { NavbarMenuProps } from './Menu'
 import { getClasses } from '../../utils/Base'
+import { ComponentBaseProps } from '../../interface';
 
 export interface NavbarProps extends ComponentBaseProps{
     brand: NavbarBrandProps,
