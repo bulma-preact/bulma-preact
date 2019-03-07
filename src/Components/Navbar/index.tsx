@@ -11,26 +11,24 @@ export interface NavbarProps extends ComponentBaseProps{
 
 let index = 0
 export class Navbar extends Component<NavbarProps, { isActive: boolean}> {
-    brand: NavbarBrandProps
-    menu: NavbarMenuProps
+    id: string
     constructor(props: NavbarProps) {
         super(props)
-        let id = 'bulma-preact-navbar-' + (++index)
-        this.menu = Object.assign({id}, props.menu)
-        this.brand = Object.assign({dataTarget: id}, props.brand)
+        this.id = 'bulma-preact-navbar-' + (++index)
         this.state = {
             isActive: false
         }
     }
     onToggle = (isActive: boolean) => {
-        this.setState({ isActive })
+        this.setState({isActive})
     }
     render () {
-        const { brand, menu } = this
+        const { id, onToggle } = this
+        const { brand, menu } = this.props
         const { isActive } = this.state
         return <div className={getClasses(this.props, 'navbar')} >
-            <Brand {...brand} onToggle={this.onToggle} isActive={isActive}/>
-            <Menu {...menu} isActive={isActive}/>
+            <Brand {...brand} onToggle={onToggle} isActive={isActive}/>
+            <Menu {...menu} id={id} isActive={isActive}/>
         </div>
     } 
 }
