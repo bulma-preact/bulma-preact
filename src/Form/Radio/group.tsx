@@ -4,16 +4,16 @@ import classNames from '../../utils/classnames'
 import Base, { BasePropsType, BaseStateType, getClasses } from '../../utils/Base'
 import Radio from './radio';
 
-export interface Option {
+export interface OptionProps {
   name: string
   value: string
   disabled: boolean
   style:object
 }
-export interface RadioType extends BasePropsType {
+export interface RadioProps extends BasePropsType {
   defaultValue?: string   //	默认选中的值	any	无
   name?: string   //	RadioGroup 下所有 input[type = "radio"] 的 name 属性	string	无
-  options?: Option   //以配置形式设置子元素	string[] | Array < { name: string value: string disabled?: boolean } > 无
+  options?: OptionProps   //以配置形式设置子元素	string[] | Array < { name: string value: string disabled?: boolean } > 无
   value?: string  //	用于设置当前选中的值	any	无
 }
 
@@ -22,7 +22,7 @@ export interface RadioGroupProps extends BasePropsType {
   value?: any;
   name?: string;
   children?: any;
-  options?: Option[];
+  options?: OptionProps[];
 }
 
 export interface RadioGroupState {
