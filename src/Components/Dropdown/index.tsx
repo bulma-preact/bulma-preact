@@ -7,7 +7,7 @@ export interface StateType extends ComponentBaseState {
 }
 export interface PropsType extends StateType {
     align?: 'right'
-    content?: Content
+    content?: any
     toggle?: boolean
     trigger?: 'click' | 'hover' | 'focus'
     up?: boolean 
