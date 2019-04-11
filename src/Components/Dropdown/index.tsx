@@ -39,7 +39,7 @@ export class Dropdown extends Component<PropsType, StateType> {
         this.index = ++Dropdown_Index
     }
     componentWillReceiveProps (nextProps) {
-        if (nextProps.isActive !== this.state.isActive) {
+        if (typeof nextProps.isActive != 'undefined' && nextProps.isActive !== this.state.isActive) {
             this.setState({
                 isActive: nextProps.isActive
             })
