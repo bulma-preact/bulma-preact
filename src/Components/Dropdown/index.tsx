@@ -9,6 +9,7 @@ export interface PropsType extends StateType {
     align?: 'right'
     content?: any
     toggle?: boolean
+    onToggle?: (active: boolean) => void
     trigger?: 'click' | 'hover' | 'focus'
     up?: boolean 
 }
@@ -47,12 +48,13 @@ export class Dropdown extends Component<PropsType, StateType> {
     }
     
     onClick = () => {
-        const { trigger = 'click', toggle = true } = this.props
+        const { trigger = 'click', toggle = true, onToggle } = this.props
         const { isActive } = this.state
         if (trigger === 'click') {
             this.setState({
                 isActive: toggle ? !isActive : true
             })
+            onToggle(toggle ? !isActive : true)
         }
     }
     onFocus = () => {
