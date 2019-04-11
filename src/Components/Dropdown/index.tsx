@@ -65,11 +65,14 @@ export class Dropdown extends Component<PropsType, StateType> {
     }
     onBlur = () => {
         const t = this
-        setTimeout(function () {
-            t.setState({
-                isActive: false
-            })
-        }, 200)
+        const { trigger } = this.props
+        if (trigger === 'focus') {
+            setTimeout(function () {
+                t.setState({
+                    isActive: false
+                })
+            }, 200)
+        }
     }
     render() {
         const { state, props, onClick } = this
