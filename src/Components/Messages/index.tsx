@@ -1,6 +1,7 @@
 import { h, VNode, Component, render } from 'preact'
 import Base, { BasePropsType, getClasses } from '../../utils/Base'
 import IPreact from 'ipreact'
+import { Colors } from '../../interface';
 const { connect, getState, dispatch } = IPreact()({})
 
 export interface MessagesProps {
@@ -44,7 +45,12 @@ const MessageShow = connect(() => getState())(({
 </div>)
 
 let message
-Messages.showMessage = (info, options = {}) => {
+interface MessagesOptions {
+    header?: any
+    isColor?: Colors
+    timeout?: number
+}
+Messages.showMessage = (info, options: MessagesOptions = {}) => {
     const t = 1000 + info.length * 100
     const { header = '信息', isColor = 'primary', timeout = t } = options
     if (!message) {

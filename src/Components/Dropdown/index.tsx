@@ -89,14 +89,14 @@ export class Dropdown extends Component<PropsType, StateType> {
             'is-up': up
         })}>
             <div className="dropdown-trigger" onClick={this.onClick}>
-                <button className={getClasses(btnProps, 'button')}
+                <a className={getClasses(btnProps, 'button')}
                     onFocus={this.onFocus}
                     onBlur={this.onBlur}
                     aria-haspopup="true"
                     aria-controls={`dropdown-menu${this.index}`}
                 >
                     {children}
-                </button>
+                </a>
             </div>
             <div className="dropdown-menu" id={`dropdown-menu${this.index}`} role="menu">
                 {content}
