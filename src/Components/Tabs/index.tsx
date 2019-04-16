@@ -32,6 +32,13 @@ export class Tabs extends Component<PropsType, StateType> {
             activeIndex: props.activeIndex | 0
         }
     }
+    componentWillReceiveProps(nextProps: PropsType) {
+        const { activeIndex = 0 } = nextProps
+        if (activeIndex != this.state.activeIndex) {
+            this.setState({activeIndex})
+        }
+    }
+    
     onClick = (activeIndex: number) => {
         const { onTabs } = this.props
         onTabs && onTabs(activeIndex)
