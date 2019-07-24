@@ -32,7 +32,7 @@ class Demo extends Component {
         filter: (item) => true
     }
     onChange = (valid, filter) => {
-        if (valid) {
+        if (valid && filter) {
             this.setState({filter})
         }
     }

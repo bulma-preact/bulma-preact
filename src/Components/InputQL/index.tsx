@@ -35,7 +35,7 @@ export class InputQL extends Component<InputQLProps, State> {
         this.setState(state)
     }
     renderMeta = () => {
-        const { columns = [], onChange, items = [] } = this.props
+        const { columns = [], items = [] } = this.props
         const reg = /^(\w+)\s+(==|!=|>|<|≈)\s+['"]?([^\s'"]+)['"]?(\s*)$/
         const reg1 = /^(\w+)\s+$/
         const reg2 = /^(\w+)\s+(==|!=|>|<|≈)\s+$/
@@ -117,7 +117,9 @@ export class InputQL extends Component<InputQLProps, State> {
         this.setState({active: true})
     }
     onBlur = () => {
-        this.setState({active: false})
+        setTimeout(() => {
+            this.setState({active: false})
+        }, 40);
     }
     onKeyDown = (e: KeyboardEvent) => {
         let { active_index, dropdowns = [] } = this.state
@@ -149,7 +151,7 @@ export class InputQL extends Component<InputQLProps, State> {
     onItemSelect = (item: string) => {
         this.input.value = this.input.value.replace(/\S+$/, '') + item + ' '
         this.input.focus()
-        setTimeout(this.onInput, 200);
+        setTimeout(this.onInput, 20);
     }
     render() {
         const { state, props } = this
