@@ -158,9 +158,16 @@ export class InputQL extends Component<InputQLProps, State> {
         const { valid, active, dropdowns, active_index } = state
         const { style, isUp } = props
 
+        let m = {}
+        const dropdownList = dropdowns.filter(d => {
+            if (m[d]) {
+                return false
+            }
+            return m[d] = true
+        })
         return <div className={classNames({
             'dropdown': true,
-            'is-active': active && !!dropdowns.length,
+            'is-active': active && !!dropdownList.length,
             'is-up': !!isUp
         })}>
             <div className="dropdown-trigger">
@@ -171,7 +178,7 @@ export class InputQL extends Component<InputQLProps, State> {
             </div>
             <div className="dropdown-menu" id={`dropdown-menu${this.index}`} role="menu">
                 <div class="dropdown-content" style={{maxHeight: 300, overflow: 'auto'}}>
-                    {dropdowns.map((item, i) => <a class={classNames({
+                    {dropdownList.map((item, i) => <a class={classNames({
                         'dropdown-item': true,
                         'is-active': active_index === i
                     })} onClick={() => this.onItemSelect(item)} key={item}>{item}</a>)}
