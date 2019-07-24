@@ -1,4 +1,5 @@
 export { Dropdown, PropsType as DropdownProps } from './Dropdown/index'
+export { InputQL, InputQLProps } from './InputQL'
 export { Menu, MenuPropsType } from './Menu/index'
 export { Navbar, NavbarProps } from './Navbar/index'
 export { Tabs, PropsType as TabsProps } from './Tabs/index'
