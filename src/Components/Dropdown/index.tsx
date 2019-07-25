@@ -1,9 +1,9 @@
 import { h, VNode, Component } from 'preact'
 import classNames from '../../utils/classnames'
 import { getClasses } from '../../utils/Base'
-import { ComponentBaseState } from '../../interface';
+import { ComponentBaseState, ComponentBaseProps } from '../../interface';
 
-export interface StateType extends ComponentBaseState {
+export interface StateType extends ComponentBaseState, ComponentBaseProps {
 }
 export interface PropsType extends StateType {
     align?: 'right'
@@ -12,7 +12,6 @@ export interface PropsType extends StateType {
     onToggle?: (active: boolean) => void
     trigger?: 'click' | 'hover' | 'focus'
     up?: boolean
-    type?: string
 }
 
 
@@ -80,15 +79,14 @@ export class Dropdown extends Component<PropsType, StateType> {
     render() {
         const { state, props, onClick } = this
         const { isActive } = state
-        const { content = '', align = 'left', trigger = 'click', up = false, children, type } = props
+        const { content = '', align = 'left', trigger = 'click', up = false, children } = props
         const btnProps = Object.assign({}, props, {isActive: false})
         return <div className={classNames({
             'dropdown': true,
             'is-active': isActive,
             'is-right': align === 'right',
             'is-hoverable': trigger === 'hover',
-            'is-up': up,
-            [`is-${type}`]: type
+            'is-up': up
         })}>
             <div className="dropdown-trigger" onClick={this.onClick}>
                 <a className={getClasses(btnProps, 'button')}
