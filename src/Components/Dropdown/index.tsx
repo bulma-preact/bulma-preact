@@ -11,7 +11,8 @@ export interface PropsType extends StateType {
     toggle?: boolean
     onToggle?: (active: boolean) => void
     trigger?: 'click' | 'hover' | 'focus'
-    up?: boolean 
+    up?: boolean
+    type?: string
 }
 
 
@@ -79,14 +80,15 @@ export class Dropdown extends Component<PropsType, StateType> {
     render() {
         const { state, props, onClick } = this
         const { isActive } = state
-        const { content = '', align = 'left', trigger = 'click', up = false, children } = props
+        const { content = '', align = 'left', trigger = 'click', up = false, children, type } = props
         const btnProps = Object.assign({}, props, {isActive: false})
         return <div className={classNames({
             'dropdown': true,
             'is-active': isActive,
             'is-right': align === 'right',
             'is-hoverable': trigger === 'hover',
-            'is-up': up
+            'is-up': up,
+            [`is-${type}`]: type
         })}>
             <div className="dropdown-trigger" onClick={this.onClick}>
                 <a className={getClasses(btnProps, 'button')}
