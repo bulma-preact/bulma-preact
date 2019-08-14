@@ -85,7 +85,6 @@ class Popover extends Component<PropsType, StateType> {
         } = this.props;
         const { visible } = this.state;
         const childNode = children[0];
-        const node = childNode.children[0];
         const nodeName = childNode.nodeName;
         const key = childNode.key;
         const attributes = childNode.attributes || {};
@@ -106,7 +105,7 @@ class Popover extends Component<PropsType, StateType> {
         return h(
             nodeName,
             params,
-            node,
+            childNode.children,
             (this.props.visible || visible) && content && this.renderTooltip(),
         );
     }
