@@ -32,7 +32,8 @@ export interface Iform {
     setValues: (values: { [name: string]: string }) => void;
     setErrors: (errors: { [name: string]: string[] }) => void;
     setValue: (key: string, value: string) => void;
-    setError: (key: string, errors: string[]) => void
+    setError: (key: string, errors: string[]) => void;
+    resetFields: () => void;
 }
 
 export const createForm = (Com) => {
@@ -88,6 +89,14 @@ export const createForm = (Com) => {
                 const errors = errs[key] || [];
                 const fieldComponent = fieldComponents[key];
                 fieldComponent.setError(errors)
+            }
+        }
+
+        resetFields = () => {
+            const { fieldComponents } = this;
+            for (let key in fieldComponents) {
+                fieldComponents[key].setValue(null);
+                fieldComponents[key].setError([]);
             }
         }
 
@@ -243,6 +252,7 @@ export const createForm = (Com) => {
             setErrors: this.setErrors,
             setValue: this.setValue,
             setError: this.setError,
+            resetFields: this.resetFields,
         }
 
         render() {

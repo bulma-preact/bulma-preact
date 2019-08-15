@@ -31,6 +31,10 @@ class FormExample extends Component {
         return res;
     }
 
+    reset = () => {
+        this.props.form.resetFields()
+    }
+
     render() {
         const { form } = this.props
         const { fieldDecorator } = form;
@@ -49,6 +53,7 @@ class FormExample extends Component {
                     }]
                 })(<input class="input" />)}
                 <button class="button" onClick={this.submit}>submit</button>
+                <button class="button" onClick={this.reset}>reset</button>
                 <div>
                     {this.renderResult()}
                 </div>
