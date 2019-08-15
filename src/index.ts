@@ -1,5 +1,5 @@
 import Columns from './Columns/index'
-import * as Form from './Form/index'
+export * from './Form/index'
 
 import * as Preact from 'preact'
 export * from './Components/index'
@@ -11,6 +11,5 @@ export * from './Elements/index'
  */
 export {
     Columns,
-    Form,
     Preact
 }
