@@ -66,6 +66,8 @@ class Popover extends Component<PropsType, StateType> {
                         borderRadius: '4px',
                         boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.1)',
                         zIndex: 1,
+                        textAlign: 'left',
+                        color: '#444',
                         ...popoverStyles
                     }}
                 >
