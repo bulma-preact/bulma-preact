@@ -34,6 +34,7 @@ export interface Iform {
     setValue: (key: string, value: string) => void;
     setError: (key: string, errors: string[]) => void;
     resetFields: () => void;
+    getFieldValue: (key: string) => string;
 }
 
 export const createForm = (Com) => {
@@ -60,6 +61,14 @@ export const createForm = (Com) => {
             this.fieldComponents[key] = com;
         }
 
+        resetFields = ():void => {
+            const { fieldComponents } = this;
+            for (let key in fieldComponents) {
+                fieldComponents[key].setValue(null);
+                fieldComponents[key].setError([]);
+            }
+        }
+
         setFieldConfig = (key, config): void => {
             this.fieldConfigs[key] = config;
         }
@@ -72,6 +81,12 @@ export const createForm = (Com) => {
         setError = (key, errors) => {
             const { fieldComponents } = this;
             fieldComponents[key].setError(errors)
+        }
+
+        getFieldValue = (key) => {
+            const com = this.fieldComponents[key]
+            const state = com.getState();
+            return state.value;
         }
 
         setValues = (values) => {
@@ -92,14 +107,6 @@ export const createForm = (Com) => {
             }
         }
 
-        resetFields = () => {
-            const { fieldComponents } = this;
-            for (let key in fieldComponents) {
-                fieldComponents[key].setValue(null);
-                fieldComponents[key].setError([]);
-            }
-        }
-
         validates = (callback = (errors, values) => {}) => {
             let errors = {};
             let values = {};
@@ -109,7 +116,7 @@ export const createForm = (Com) => {
                 const fieldRules = fieldConfig.rules || [];
                 const states = this.getStates()
                 const fieldState = states[key];
-                errors[key] = [];
+                errors[key] = fieldState.errors;
                 if (fieldRules.find(r => r.pattern)) {
                     const patternItem = fieldRules.filter(r => r.pattern)[0];
                     if (!patternItem.pattern.test(fieldState.value) && fieldState.value) {
@@ -129,11 +136,16 @@ export const createForm = (Com) => {
                     }
                 }
                 if (errors[key].length > 0) hasError = true;
-                values[key] = fieldState.value;
+                values[key] = !fieldState.value && fieldState.value !== 0 ? null : `${fieldState.value}`;
             }
             this.setErrors(errors);
             this.setValues(values);
             callback(!hasError ? hasError : errors, values);
+        }
+
+        validatorCallBack = (key) => (message) => {
+            if (message) this.setError(key, [message]);
+            else this.setError(key, [])
         }
 
         fieldDecorator = (
@@ -170,14 +182,17 @@ export const createForm = (Com) => {
                         this.setState({ value })
                     }
 
-                    setError = (errs) => {
-                        this.setState({
-                            errors: errs
-                        })
+                    setError = (errors) => {
+                        this.setState({ errors })
                     }
 
                     getState = () => {
                         return this.state;
+                    }
+
+                    validatorCallBack = (key) => (message) => {
+                        if (message) this.setError([message]);
+                        else this.setError([])
                     }
     
                     handleChange = (key, config) => (value) => {
@@ -202,12 +217,18 @@ export const createForm = (Com) => {
                             }
                         }
                         this.setState({ value, errors });
+                        if (rules.find(r => r.validator)) {
+                            const validatorItems = rules.filter(r => r.validator);
+                            validatorItems.map(item => {
+                                item.validator(value, this.validatorCallBack(key))
+                            })
+                        }
                     }
     
                     render() {
                         const nodeName: any = element.nodeName;
                         const children = element.children;
-                        const errMsg = this.state.errors[0]
+                        const errMsg = this.state.errors[0];
                         const props = {
                             ...element.attributes,
                             onInput: (e) => {
@@ -252,6 +273,7 @@ export const createForm = (Com) => {
             setErrors: this.setErrors,
             setValue: this.setValue,
             setError: this.setError,
+            getFieldValue: this.getFieldValue,
             resetFields: this.resetFields,
         }
 
@@ -265,4 +287,3 @@ export const createForm = (Com) => {
         }
     }
 }
-
