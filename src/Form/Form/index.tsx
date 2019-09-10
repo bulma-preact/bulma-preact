@@ -92,7 +92,7 @@ export const createForm = (Com) => {
         setValues = (values) => {
             const { fieldComponents } = this;
             for (let key in values) {
-                const value = values[key] || null;
+                const value = values[key];
                 const fieldComponent = fieldComponents[key];
                 fieldComponent.setValue(value)
             }
@@ -136,7 +136,7 @@ export const createForm = (Com) => {
                     }
                 }
                 if (errors[key].length > 0) hasError = true;
-                values[key] = !fieldState.value && fieldState.value !== 0 ? null : `${fieldState.value}`;
+                values[key] = !fieldState.value && fieldState.value !== 0 ? null : fieldState.value;
             }
             this.setErrors(errors);
             this.setValues(values);
