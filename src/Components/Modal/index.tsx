@@ -10,6 +10,7 @@ export interface ModalProps extends BasePropsType {
     onClose?: Function
     card?: CardProps
     withBackground?: boolean
+    unmountOnClose?: boolean
     modalContent?: string | VNode | CardProps | FunctionalComponent
 }
 
@@ -44,10 +45,10 @@ export class Modal extends Component<ModalProps, { isActive : boolean }> {
         })
     }
     render() {
-        const { style, showClose, modalContent, withBackground = true } = this.props
+        const { style, showClose, modalContent, withBackground = true, unmountOnClose } = this.props
         const { isActive } = this.state
         const className = getClasses(Object.assign({}, this.props, { isActive }), 'modal')
-        return <div style={style} className={className}>
+        return (!isActive && unmountOnClose) ? null : <div style={style} className={className}>
             {withBackground && <div className="modal-background"></div>}
             <div className="modal-content">
                 {typeof modalContent === 'function' ? modalContent({}) : modalContent}
@@ -78,13 +79,12 @@ export const ModalShow = connect(() => getState())((props: ModalProps) => <Modal
 }}/>)
 
 let modal: VNode<Modal>
-Modal.showModal = (modalContent, options = {showClose: true, withBackground: true}) => {
+Modal.showModal = (modalContent, options: ModalProps = { showClose: true, withBackground: true, unmountOnClose: true }) => {
     if (!modal) {
         render(modal = <ModalShow />, document.body)
     }
     dispatch((state): ModalProps => {
-        const { showClose, withBackground } = options
-        return { ...state, modalContent, showClose, withBackground, isActive: true }
+        return { ...state, modalContent, ...options, isActive: true }
     })
 }
 Modal.hideModal = Modal.close = () => {

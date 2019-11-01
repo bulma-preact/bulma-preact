@@ -37,11 +37,21 @@ export class Modal {
 import { Modal, Button, Card, ModalCard, Button } from 'bulma-preact'
 import { render, h, Component } from 'preact'
 
-const modalContent = <div className="box">
-    <h2>h2</h2>
-    <p>content, content<br/> ok!</p>
-</div>
-
+class ModalContent extends Component {
+    
+    componentDidMount () {
+        console.log('componentDidMount')
+    }
+    componentWillUnmount () {
+        console.log('componentWillUnmount')
+    }
+    render ()  {
+        return <div className="box">
+            <h2>h2</h2>
+            <p>content, content<br/> ok!</p>
+        </div>
+    }
+}
 
 
 class ModalShow extends Component {
@@ -59,7 +69,7 @@ class ModalShow extends Component {
         const { onClose } = this
         const card = {
             header: 'Title',
-            body: modalContent.children,
+            body: <ModalContent/>,
             footer: {
                 buttons: [
                     {name: 'Yes', isColor: 'success', onClick: (e) => {alert('Yes'); onClose()}},
@@ -74,7 +84,7 @@ class ModalShow extends Component {
                 <ModalCard isActive={this.state.isActive} card={card} onClose={() => alert('close card')} />
                 :
                 <Modal isActive={this.state.isActive} showClose
-                    modalContent={this.props.innerCard ? <Card className="panel" header={{title: 'header'}} footer={card.footer} >something!</Card> : modalContent}
+                    modalContent={this.props.innerCard ? <Card className="panel" header={{title: 'header'}} footer={card.footer} >something!</Card> : <ModalContent/>}
                     onClose={() => alert('close modal')} />
             }
         </span>
@@ -85,7 +95,7 @@ render(<div className="buttons">
     <ModalShow>Open Modal</ModalShow>
     <ModalShow isCard>Open Card Modal</ModalShow>
     <ModalShow innerCard>Open Inner Card Modal</ModalShow>
-    <Button onClick={() => Modal.showModal(modalContent)}>showModal(Box)</Button>
+    <Button onClick={() => Modal.showModal(<ModalContent/>)}>showModal(Box)</Button>
     <Button onClick={() => Modal.showModal(
         <Card className="panel" header={{title: 'header'}} footer={{
             buttons: [
