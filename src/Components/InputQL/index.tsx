@@ -116,11 +116,6 @@ export class InputQL extends Component<InputQLProps, State> {
         this.renderMeta()
         this.setState({active: true})
     }
-    onBlur = () => {
-        setTimeout(() => {
-            this.setState({active: false})
-        }, 40);
-    }
     onKeyDown = (e: KeyboardEvent) => {
         let { active_index, dropdowns = [] } = this.state
         const len = dropdowns.length
@@ -151,8 +146,29 @@ export class InputQL extends Component<InputQLProps, State> {
     onItemSelect = (item: string) => {
         this.input.value = this.input.value.replace(/\S+$/, '') + item + ' '
         this.input.focus()
-        setTimeout(this.onInput, 20);
+        setTimeout(this.onInput, 0);
     }
+
+    container: HTMLDivElement
+    refContainer = (container: HTMLDivElement) => {
+        this.container = container
+    }
+
+    docClick = (e: any) => {
+        const target: HTMLElement = e.target
+        if (target === this.container || this.container.contains(target)) {
+            return
+        } else {
+            this.setState({ active: false })
+        }
+    }
+    componentDidMount () {
+        document.addEventListener('click', this.docClick)
+    }
+    componentWillUnmount () {
+        document.removeEventListener('click', this.docClick)
+    }
+    
     render() {
         const { state, props } = this
         const { valid, active, dropdowns, active_index } = state
@@ -169,12 +185,12 @@ export class InputQL extends Component<InputQLProps, State> {
             'dropdown': true,
             'is-active': active && !!dropdownList.length,
             'is-up': !!isUp
-        })}>
+        })} ref={this.refContainer}>
             <div className="dropdown-trigger">
                 <input type="text" className={classNames({
                     'input': true,
                     'is-danger': !valid
-                })} style={style} ref={this.refInput} onInput={this.onInput} onKeyDown={this.onKeyDown} onFocus={this.onInput} onBlur={this.onBlur}/>
+                })} style={style} ref={this.refInput} onInput={this.onInput} onKeyDown={this.onKeyDown} onFocus={this.onInput} />
             </div>
             <div className="dropdown-menu" id={`dropdown-menu${this.index}`} role="menu">
                 <div class="dropdown-content" style={{maxHeight: 300, overflow: 'auto'}}>
