@@ -37,7 +37,7 @@
     "f2e-middle-rollup": "^0.3.3",
     "f2e-middle-typescript": "^0.3.3",
     "f2e-server": "^2.9.15",
-    "highlight.js": "^9.13.1",
+    "highlight.js": "^10.4.1",
     "lodash": "^4.17.11",
     "marked": "^0.3.19",
     "preact-render-to-string": "^3.8.2",
